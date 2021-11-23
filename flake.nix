@@ -60,7 +60,6 @@
           #pkgs.nur.repos.sikmir.librewolf
         ];
         system.configurationRevision = lib.mkIf (self ? rev) self.rev;
-        nix.registry.nixpkgs.flake = nixpkgs;
       })
     ];
 
