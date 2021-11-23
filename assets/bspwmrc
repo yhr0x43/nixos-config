@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+bspc config active_border_color '#1e1e1e'
+bspc config border_width 4
+bspc config borderless_monocle true
+bspc config bottom_padding 0
+bspc config click_to_focus 'button1'
+bspc config focused_border_color '#5e81bc'
+bspc config gapless_monocle true
+bspc config left_padding 0
+bspc config merge_overlapping_monitors true
+bspc config normal_border_color '#4c566a'
+bspc config pointer_action1 'move'
+bspc config pointer_action2 'resize_side'
+bspc config pointer_action3 'resize_corner'
+bspc config pointer_modifier 'mod4'
+bspc config presel_feedback_color '#5e81ac'
+bspc config remove_disabled_monitors true
+bspc config right_padding 0
+bspc config single_monocle true
+bspc config split_ratio 0.500000
+bspc config top_padding 30
+bspc config window_gap 5
+
+bspc rule -a sun-awt-X11-XDialogPeer state=floating
+
+xrandr --output DisplayPort-0 --mode 3440x1440 --rate 100 --primary
+xrandr --output DisplayPort-2 --mode 1920x1080 --rotate left --left-of DisplayPort-0
+xrandr --output HDMI-A-0 --mode 1920x1080 --below DisplayPort-0
+xsetwacom --set "Wacom One Pen Display 13 Pen stylus" MapToOutput HDMI-A-0
+
+bspc monitor DisplayPort-0 -d 1 2 3 4 5 6 7 8 9
