@@ -1,4 +1,4 @@
-{ ... } : {
+{ lib, ... } : {
   # / is wiped on every boot to keep unmanaged state under control
   fileSystems."/" = {
     device = "rpool/expendable/wipedonboot";
