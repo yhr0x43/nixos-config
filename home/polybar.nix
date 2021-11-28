@@ -98,7 +98,7 @@ in
         label-urgent-padding = 1;
 
         label-empty = "%icon%";
-        label-empty-foreground = "\${colors.lightgray}";
+        #label-empty-foreground = "\${colors.lightgray}";
         label-empty-padding = 1;
       };
       "module/xwindow" = {
