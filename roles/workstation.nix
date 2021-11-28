@@ -52,15 +52,6 @@
   services.printing.drivers = with pkgs; [
     gutenprint
     gutenprintBin
-    hplipWithPlugin
-    samsungUnifiedLinuxDriver
-    splix
-    brlaser
-    brgenml1lpr
-    brgenml1cupswrapper
-    cups-dymo
-    mfcl2700dncupswrapper
-    mfcl2700dnlpr
   ];
 
   hardware.sane.enable = true;

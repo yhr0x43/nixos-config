@@ -13,12 +13,5 @@
     mumble
   ];
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-original"
-    "steam-runtime"
-    "steam-runtime-native"
-  ];
-
   programs.steam.enable = true;
 }

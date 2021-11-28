@@ -8,12 +8,14 @@
     ./syncthing.nix
   ];
 
-  #TODO: use predicate
-  nixpkgs.config.allowUnfree = true;
-  environment.variables.NIXPKGS_ALLOW_UNFREE = "1";
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "steam"
+    "steam-original"
+    "steam-runtime"
+    "minecraft-launcher"
+    "discord"
+  ];
 
-  # some system stuff
-  # -----------------
   time.timeZone = lib.mkDefault "America/Chicago";
 
   #TODO: change locale

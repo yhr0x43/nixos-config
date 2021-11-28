@@ -28,12 +28,10 @@
       hasklig
       inconsolata
       source-code-pro
-      symbola
       ubuntu_font_family
 
       # symbol fonts
       # ------------
-      #nerdfonts
       powerline-fonts
       font-awesome-ttf
       fira-code-symbols
