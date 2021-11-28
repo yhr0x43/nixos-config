@@ -5,6 +5,7 @@
     ./fonts.nix
     ./syncthing.nix
     ./xserver.nix
+    ./i18n.nix
   ];
 
   time.timeZone = "America/Chicago";
@@ -42,14 +43,7 @@
   system.custom.mainUser = {
     enable = true;
     userName = "yhrc";
+    #TODO: manage wireshark in system.custom.mainUser
     extraGroups = [ "wireshark" "video" "lp" "scanner" ];
   };
-  #users.users.yhrc = rec {
-  #  name = "yhrc";
-  #  shell = pkgs.zsh;
-  #  home = "/home/${name}";
-  #  isNormalUser = true;
-  #  extraGroups = [ "wheel" "lp" "scanner" "libvirtd" "video" "networkmanager" ];
-  #};
-
 }

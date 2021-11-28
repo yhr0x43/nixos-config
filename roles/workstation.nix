@@ -1,4 +1,4 @@
-{ pkgs, hardware, home-manager, ... }: {
+{ config, pkgs, hardware, home-manager, ... }: {
 
   imports = [ ./desktop ];
 
@@ -31,9 +31,7 @@
     usbutils
     imagemagick
     libnotify
-    gimp-with-plugins #GIMP... with plugins?
-    #virt-manager
-    #spice-gtk
+    gimp-with-plugins
 
     hackrf
   ];
@@ -66,16 +64,6 @@
 
   services.dbus.enable = true;
 
-  i18n = {
-    defaultLocale = "ja_JP.UTF-8";
-    supportedLocales = [ "en_US.UTF-8/UTF-8" "ja_JP.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
-    inputMethod = {
-      enabled = "fcitx";
-      fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-rime ];
-      fcitx.engines = with pkgs.fcitx-engines; [ mozc rime ];
-    };
-  };
-
   #security.wrappers.spice-client-glib-usb-acl-helper.source =
   #  "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
 
@@ -101,7 +89,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.users.mainUser = import ../home.nix;
 
-  nix.trustedUsers = [ "yhrc" ];
+  nix.trustedUsers = [ config.system.custom.mainUser.userName ];
 
   # Way too annoying to manage on a desktop system IMHO
   networking.firewall.enable = false;
