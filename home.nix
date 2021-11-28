@@ -117,6 +117,8 @@
     libreoffice-fresh
 
     python38Packages.xdot
+
+    (aspellWithDicts (d: [ d.en ]))
   ];
 
   xsession.enable = true;
