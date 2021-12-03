@@ -21,11 +21,6 @@
   # Networking
   #networking.networkmanager.enable = true;
 
-  environment.variables = {
-    BROWSER = "firefox";
-    EDITOR = "nvim";
-  };
-
   environment.systemPackages = with pkgs; [
     openconnect
     usbutils
@@ -53,11 +48,6 @@
   ];
 
   hardware.sane.enable = true;
-
-  #xdg.portal.enable = true;
-  #xdg.portal.gtkUsePortal = true;
-  #xdg.portal.extraPortals =
-  #  [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
 
   services.picom.enable = true;
   services.upower.enable = true;
