@@ -21,9 +21,7 @@
   };
 
   networking.useDHCP = true;
-  networking.interfaces.enp6s0.useDHCP = true;
-  networking.interfaces.enp7s0.useDHCP = true;
-  networking.interfaces.wlp5s0.useDHCP = true;
+  networking.interfaces.enp8s0.useDHCP = true;
 
   networking.hostName = "cybermega";
   networking.hostId = "6964344f";

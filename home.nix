@@ -10,7 +10,6 @@
 
   services.lorri.enable = true;
   services.syncthing.enable = true;
-  #FIXME: tray.target not found, use home-manager to manage xsession
   services.syncthing.tray.enable = true;
 
   xdg.enable = true;
@@ -35,15 +34,6 @@
     templates = "${config.home.homeDirectory}/Templates";
     videos = "${config.home.homeDirectory}/vid";
   };
-
-  # Legacy tools expect a channel
-  #home.sessionVariables = {
-  #  NIX_PATH = builtins.concatStringsSep ":" [
-  #    "nixpkgs=${pkgs}"
-  #    "nixos-config=/etc/nixos/configuration.nix"
-  #    "/nix/var/nix/profiles/per-user/root/channels"
-  #  ];
-  #};
 
   programs.dircolors.enable = true;
 
