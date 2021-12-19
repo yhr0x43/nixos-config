@@ -53,6 +53,6 @@
     enable = true;
     userName = "yhrc";
     #TODO: manage wireshark in system.custom.mainUser
-    extraGroups = [ "wireshark" "video" "lp" "scanner" ];
+    extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" ];
   };
 }
