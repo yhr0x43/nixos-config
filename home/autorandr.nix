@@ -14,7 +14,7 @@
       "desktop-3" = {
         inherit fingerprint;
         config = {
-          DisplayPort-0= {
+          HDMI-A-0 = {
             enable = true;
             primary = true;
             position = "1080x0";
@@ -27,7 +27,7 @@
             mode = "1920x1080";
             rotate = "left";
           };
-          HDMI-A-0 = {
+          DisplayPort-0 = {
             enable = true;
             position = "1080x1440";
             mode = "1920x1080";
@@ -35,20 +35,14 @@
           };
         };
         hooks.postswitch = "
+          bspc config -m DisplayPort-0 top_padding 0
           bspc config -m DisplayPort-1 top_padding 0
-          bspc config -m HDMI-A-0 top_padding 0
           xsetwacom --set \"Wacom One Pen Display 13 Pen stylus\" MapToOutput HDMI-A-0
         ";
       };
       "desktop" = {
         inherit fingerprint;
         config = {
-          DisplayPort-0= {
-            enable = true;
-            position = "1920x2160";
-            mode = "1920x1080";
-            rate = "60";
-          };
           HDMI-A-0 = {
             enable = true;
             primary = true;
@@ -56,11 +50,17 @@
             mode = "3840x2160";
             rate = "60";
           };
+          DisplayPort-0= {
+            enable = true;
+            position = "1920x2160";
+            mode = "1920x1080";
+            rate = "60";
+          };
         };
         hooks.postswitch = "
           bspc monitor HDMI-A-0 -d 1 2 3 4 5 6 7 8 9
           bspc config -m DisplayPort-0 top_padding 0
-          xsetwacom --set \"Wacom One Pen Display 13 Pen stylus\" MapToOutput HDMI-A-0
+          xsetwacom --set \"Wacom One Pen Display 13 Pen stylus\" MapToOutput DisplayPort-0
         ";
       };
       "tpx1c" = {
