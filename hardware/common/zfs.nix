@@ -42,7 +42,6 @@
     "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth"
     # Remember lectured sudo users
     "L /var/db/sudo/lectured - - - - /persist/var/db/sudo/lectured"
-    "L /var/lib/flatpak - - - - /persist/var/lib/flatpak"
   ];
 
   # Remember SSH host keys
