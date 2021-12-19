@@ -6,7 +6,7 @@
   home.username = "yhrc";
   home.homeDirectory = "/home/yhrc";
 
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
 
   services.lorri.enable = true;
   services.syncthing.enable = true;

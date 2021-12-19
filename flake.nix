@@ -3,7 +3,7 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -13,7 +13,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-21.05";
+      url = "github:nix-community/home-manager/release-21.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -45,7 +45,7 @@
       }
 
       ({ lib, pkgs, nix, ... }: {
-        system.stateVersion = "21.05";
+        system.stateVersion = "21.11";
 
         # Enable using the same nixpkgs commit in the imperative tools
         nix.registry = {

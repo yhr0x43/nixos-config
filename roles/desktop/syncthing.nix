@@ -7,21 +7,19 @@
     group = "users";
     dataDir = "/home/yhrc";
     configDir = "/home/yhrc/.config/syncthing";
-    declarative = {
-      cert = toString ../secrets/syncthing/cert.pem;
-      key = toString ../secrets/syncthing/key.pem;
 
-      folders = {
-        dox = {
-          enable = true;
-          path = "/home/yhrc/dox";
-        };
-        pass = {
-          enable = true;
-          path = "/home/yhrc/.local/share/password-store";
-        };
+    cert = toString ../secrets/syncthing/cert.pem;
+    key = toString ../secrets/syncthing/key.pem;
+
+    folders = {
+      dox = {
+        enable = true;
+        path = "/home/yhrc/dox";
+      };
+      pass = {
+        enable = true;
+        path = "/home/yhrc/.local/share/password-store";
       };
     };
   };
-
 }
