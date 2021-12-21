@@ -25,11 +25,6 @@
     fsType = "zfs";
   };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0A5E-C2D1";
-    fsType = "vfat";
-  };
-
   # Remember NixOS configuration
   environment.etc."nixos" = { source = "/persist/etc/nixos/"; };
 

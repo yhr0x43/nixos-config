@@ -1,7 +1,16 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./common/zfs.nix ]
+  imports = [ ./common/zfs.nix ];
+
+  systemd.tmpfiles.rules = [
+    "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
+  ];
+
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0D56-B89B";
+    fsType = "vfat";
+  };
 
   boot.supportedFilesystems = [ "ntfs" ];
   boot.initrd.availableKernelModules =

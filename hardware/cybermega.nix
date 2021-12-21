@@ -3,6 +3,11 @@
 {
   imports = [ ./common/zfs.nix ];
 
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-uuid/0A5E-C2D1";
+    fsType = "vfat";
+  };
+
   boot.supportedFilesystems = [ "ntfs" ];
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
