@@ -1,33 +1,22 @@
 { config, lib, pkgs, ... }:
 
-with lib;
-
 let
 
   cfg = config.system.custom.fonts;
 
 in {
-
   options.system.custom.fonts = {
     enable = mkEnableOption "enable fonts";
-    dpi = mkOption {
-      type = types.int;
-      default = 141;
-      description = ''
-        dpi of the monitor
-      '';
-    };
   };
 
   config = mkIf cfg.enable {
-
     fonts = {
-
-      enableFontDir = true;
+      fontDir.enable = true;
+      enableDefaultFonts = true;
       enableGhostscriptFonts = true;
 
       fontconfig = {
-        dpi = cfg.dpi;
+        enable = true;
         subpixel = {
           lcdfilter = "default";
           rgba = "rgb";
@@ -36,42 +25,41 @@ in {
           enable = true;
           autohint = false;
         };
-        enable = true;
         antialias = true;
-        defaultFonts = { monospace = [ "inconsolata" ]; };
+        defaultFonts = {
+          emoji = [ "Noto Color Emoji" ];
+          serif = [ "DejaVu Serif" ];
+          monospace = [ "DejaVu Sans Mono" ];
+        };
       };
 
       fonts = with pkgs; [
 
         #corefonts
-        hasklig
-        inconsolata
         source-code-pro
-        symbola
         ubuntu_font_family
 
         # symbol fonts
         # ------------
-        #nerdfonts
         powerline-fonts
         font-awesome-ttf
         fira-code-symbols
 
-        # shell font
+        # terminal font
         # ----------
         terminus_font
         gohufont
 
-        # CJK?
-        # noto-fonts
+        # CJK
+        # ----------
+        #noto-fonts
         noto-fonts-cjk
-        # noto-fonts-emoji
+        #noto-fonts-emoji
 
+        # Math
+        # ---------
+        libertinus
       ];
-
     };
-
   };
-
 }
-
