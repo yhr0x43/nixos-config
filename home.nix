@@ -18,9 +18,6 @@
   xdg.mimeApps.enable = true;
   xdg.mimeApps.defaultApplications = {
     "application/pdf" = [ "zathura.desktop" ];
-    "x-scheme-handler/steam" = [ "steam.desktop" ];
-    "x-scheme-handler/steamvr" = [ "valve-URI-steamvr.desktop" ];
-    "x-scheme-handler/vrmonitor" = [ "valve-URI-vrmonitor.desktop" ];
   };
 
   xdg.userDirs = {
