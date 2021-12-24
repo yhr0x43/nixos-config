@@ -42,10 +42,6 @@
   environment.variables = {
     BROWSER = "firefox";
     EDITOR = "nvim";
-
-    #TODO: more proper home-cleanup
-    IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
-    JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
   };
 
   system.custom.mainUser = {

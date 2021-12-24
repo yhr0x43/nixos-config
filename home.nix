@@ -111,4 +111,10 @@
 
   xsession.enable = true;
   #xsession.scriptPath = ".hm-xsession";
+
+  home.sessionVariables = {
+    #TODO: more proper home-cleanup
+    IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
+    JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
+  };
 }
