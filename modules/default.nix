@@ -3,6 +3,8 @@
 {
 
   imports = [
+    ./all
+
     ./hardware/amd.nix
 
     ./system/audio.nix

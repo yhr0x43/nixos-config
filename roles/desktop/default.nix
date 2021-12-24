@@ -1,7 +1,6 @@
 { pkgs, ... }: {
 
   imports = [
-    ../all
     ./fonts.nix
     ./syncthing.nix
     ./xserver.nix
