@@ -9,7 +9,6 @@
     (lowPrio wineWowPackages.full)
     discord
     steam-run-native
-    steam
     mumble
   ];
 
