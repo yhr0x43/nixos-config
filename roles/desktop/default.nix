@@ -55,4 +55,6 @@
     #TODO: manage wireshark in system.custom.mainUser
     extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" ];
   };
+
+  services.tumbler.enable = true;
 }
