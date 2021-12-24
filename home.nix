@@ -65,6 +65,7 @@
   programs.git = {
     enable = true;
     ignores = [ "*~" "*.swp" ];
+    package = pkgs.gitFull;
     userEmail = "yhr0x43@gmail.com";
     userName = "yhr0x43";
   };
