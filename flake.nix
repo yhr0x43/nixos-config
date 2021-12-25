@@ -56,9 +56,6 @@
         nix.package = pkgs.nixFlakes;
 
         nix.extraOptions = "experimental-features = nix-command flakes";
-        environment.systemPackages = [ 
-          #pkgs.nur.repos.sikmir.librewolf
-        ];
         system.configurationRevision = lib.mkIf (self ? rev) self.rev;
       })
     ];
@@ -80,6 +77,7 @@
       inherit system;
       modules = [
         nixos-hardware.nixosModules.lenovo-thinkpad-x1
+
         ./boxes/tpx1c.nix
       ] ++ common-modules;
     };

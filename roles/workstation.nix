@@ -25,9 +25,6 @@
   # For Dualshock 3 support
   hardware.bluetooth.package = pkgs.bluezFull;
 
-  # Networking
-  #networking.networkmanager.enable = true;
-
   environment.systemPackages = with pkgs; [
     openconnect
     usbutils
@@ -60,27 +57,6 @@
   services.upower.enable = true;
 
   services.dbus.enable = true;
-
-  #security.wrappers.spice-client-glib-usb-acl-helper.source =
-  #  "${pkgs.spice-gtk}/bin/spice-client-glib-usb-acl-helper";
-
-  #virtualisation.libvirtd = {
-  #  enable = true;
-  #  qemuOvmf = true;
-  #  qemuRunAsRoot = true;
-  #  onBoot = "ignore";
-  #  onShutdown = "shutdown";
-  #};
-
-  #virtualisation.vfio = {
-  #  enable = true;
-  #  IOMMUType = "amd";
-  #  devices = [ "10de:1b80" "10de:10f0" ];
-  #  blacklistNvidia = true;
-  #  disableEFIfb = false;
-  #  ignoreMSRs = false;
-  #  applyACSpatch = true;
-  #};
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;

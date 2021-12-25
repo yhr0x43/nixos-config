@@ -3,8 +3,11 @@
   imports = [ ../roles/workstation.nix ../roles/gaming.nix ../hardware/cybermega.nix ];
 
   boot = {
-    supportedFilesystems = [ "zfs" ];
+    supportedFilesystems = [ "zfs" "ntfs" ];
     zfs.requestEncryptionCredentials = true;
+    initrd.availableKernelModules =
+      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+    #kernelModules = [ "kvm-amd" ];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
@@ -19,6 +22,10 @@
       };
     };
   };
+
+  nix.maxJobs = 24;
+
+  services.xserver.wacom.enable = true;
 
   networking.useDHCP = true;
   networking.interfaces.enp8s0.useDHCP = true;

@@ -12,7 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    system.custom.fonts = true;
+    system.custom.fonts.enable = true;
     system.custom.syncthing = {
       enable = true;
       customUser.enable = true;

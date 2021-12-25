@@ -8,15 +8,6 @@
     fsType = "vfat";
   };
 
-  boot.supportedFilesystems = [ "ntfs" ];
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
-  boot.kernelModules = [ "kvm-amd" ];
-
-  nix.maxJobs = lib.mkDefault 24;
-
-  services.xserver.wacom.enable = true;
-
   hardware.bluetooth = {
     enable = true;
     settings = {
@@ -37,10 +28,10 @@
     '';
   };
 
+  nixpkgs.config.pulseaudio = true;
+
   # HackRF configs, hand written rules to not use plugdev
   environment.systemPackages = with pkgs; [
     hackrf
   ];
-
-  nixpkgs.config.pulseaudio = true;
 }
