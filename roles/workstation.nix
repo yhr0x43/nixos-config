@@ -1,6 +1,8 @@
-{ config, pkgs, hardware, home-manager, ... }: {
+{ config, pkgs, hardware, home-manager, ... }:
 
-  imports = [ ./desktop ];
+{
+
+  profile.desktop.enable = true;
 
   services.openssh = {
     enable = true;

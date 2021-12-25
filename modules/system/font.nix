@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
 
+with lib;
+
 let
 
   cfg = config.system.custom.fonts;
@@ -34,8 +36,9 @@ in {
       };
 
       fonts = with pkgs; [
-
         #corefonts
+        hasklig
+        inconsolata
         source-code-pro
         ubuntu_font_family
 
@@ -45,7 +48,7 @@ in {
         font-awesome-ttf
         fira-code-symbols
 
-        # terminal font
+        # shell font
         # ----------
         terminus_font
         gohufont

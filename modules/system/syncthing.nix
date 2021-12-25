@@ -1,24 +1,21 @@
 { config, lib, pkgs, ... }:
 
+with lib;
+
 let
 
   cfg = config.system.custom.syncthing;
 
 in {
-  options.system.custom.syncting = {
-    enable = mkEnableOption "custom sycthing configs"
+  options.system.custom.syncthing = {
+    enable = mkEnableOption "custom sycthing configs";
+
+    customUser.enable = mkEnableOption ''run syncthing as system.custom.mainUser'';
   };
 
   config = mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      # use home-manager to launch in user session
-      systemService = false;
-      user = config.system.custom.mainUser.userName;
-      group = "users";
-      dataDir = config.users.users.mainUser.home;
-      configDir = "${config.users.users.mainUser.home}/.config/syncthing";
-
       cert = toString ../secrets/syncthing/cert.pem;
       key = toString ../secrets/syncthing/key.pem;
 
@@ -46,20 +43,22 @@ in {
         dox = {
           enable = mkDefault false;
           id = "rfkc3-ae2wq";
-          #watch = false;
           devices = [ "k26" "tpx1c" "cybermega" ];
-          versioning = {
-            type = "simple";
-            params.keep = "5";
-          };
         };
         pass = {
           enable = mkDefault false;
           id = "nmdgd-nr5ik";
-          #watch = false;
           devices = [ "k26" "tpx1c" "cybermega" "nut" ];
         };
       };
+    } // mkIf cfg.customUser.enable {
+      # use home-manager to launch in user session
+      systemService = false;
+
+      user = config.system.custom.mainUser.userName;
+      group = "users";
+      dataDir = config.users.users.mainUser.home;
+      configDir = "${config.users.users.mainUser.home}/.config/syncthing";
     };
   };
 }

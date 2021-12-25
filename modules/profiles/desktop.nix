@@ -1,4 +1,6 @@
-{ lib, config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
+with lib;
 
 let
 
@@ -6,20 +8,42 @@ let
 
 in {
   options.profile.desktop = {
-    enable = mkEnableOption "Turn on desktop profile";
+    enable = mkEnableOption "enable desktop profile";
   };
 
   config = mkIf cfg.enable {
-    system.custom = {
-      fonts.enable = true;
-      i18n.enable = true;
-      syncthing.enable = true;
+    system.custom.fonts = true;
+    system.custom.syncthing = {
+      enable = true;
+      customUser.enable = true;
+    };
+    services.syncthing = {
+      folders = {
+        dox = {
+          enable = true;
+          path = "/home/yhrc/dox";
+        };
+        pass = {
+          enable = true;
+          path = "/home/yhrc/.local/share/password-store";
+        };
+      };
+    };
+
+    system.custom.x11.enable = true;
+    system.custom.i18n.enable = true;
+
+    system.custom.mainUser = {
+      enable = true;
+      userName = "yhrc";
+      #TODO: manage wireshark in system.custom.mainUser
+      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" ];
     };
 
     time.timeZone = "America/Chicago";
 
     environment.systemPackages = with pkgs; [
-      python3 #TODO: for passFF
+      python3 # for passFF
       pavucontrol
 
       # WM relavent derivation
@@ -51,17 +75,8 @@ in {
     environment.variables = {
       BROWSER = "firefox";
       EDITOR = "nvim";
-
-      #TODO: more proper home-cleanup
-      IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
-      JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
     };
 
-    system.custom.mainUser = {
-      enable = true;
-      userName = "yhrc";
-      #TODO: manage wireshark in system.custom.mainUser
-      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" ];
-    };
+    services.tumbler.enable = true;
   };
 }
