@@ -1,8 +1,9 @@
 { lib, ... }: {
 
-  imports = [ ../roles/gaming.nix ../hardware/cybermega.nix ];
+  imports = [ ../hardware/cybermega.nix ];
 
   profile.workstation.enable = true;
+  profile.gaming.enable = true;
 
   boot = {
     supportedFilesystems = [ "zfs" "ntfs" ];

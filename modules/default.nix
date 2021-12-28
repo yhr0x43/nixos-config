@@ -9,6 +9,7 @@
 
     ./profiles/desktop.nix
     ./profiles/workstation.nix
+    ./profiles/gaming.nix
 
     ./system/audio.nix
     ./system/bluetooth.nix
