@@ -1,6 +1,8 @@
 { lib, ... }: {
 
-  imports = [ ../roles/workstation.nix ../roles/gaming.nix ../hardware/cybermega.nix ];
+  imports = [ ../roles/gaming.nix ../hardware/cybermega.nix ];
+
+  profile.workstation.enable = true;
 
   boot = {
     supportedFilesystems = [ "zfs" "ntfs" ];
@@ -26,6 +28,11 @@
   nix.maxJobs = 24;
 
   services.xserver.wacom.enable = true;
+
+  services.dnsmasq = {
+    enable = true;
+    extraConfig = "address=/k26.local/192.168.1.2";
+  };
 
   networking.useDHCP = true;
   networking.interfaces.enp8s0.useDHCP = true;

@@ -8,6 +8,7 @@
     ./hardware/amd.nix
 
     ./profiles/desktop.nix
+    ./profiles/workstation.nix
 
     ./system/audio.nix
     ./system/bluetooth.nix
