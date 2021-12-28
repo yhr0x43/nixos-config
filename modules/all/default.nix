@@ -14,6 +14,7 @@
     "steam-runtime"
     "minecraft-launcher"
     "discord"
+    "corefonts"
   ];
 
   time.timeZone = lib.mkDefault "America/Chicago";

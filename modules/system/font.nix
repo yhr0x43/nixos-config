@@ -36,7 +36,7 @@ in {
       };
 
       fonts = with pkgs; [
-        #corefonts
+        corefonts
         hasklig
         inconsolata
         source-code-pro

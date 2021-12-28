@@ -57,6 +57,9 @@ in {
 
       # Archive manager
       mate.engrampa
+
+      hunspell
+      hunspellDicts.en-us
     ];
 
     #TODO: use u2f
