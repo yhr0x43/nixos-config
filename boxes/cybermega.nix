@@ -6,7 +6,7 @@
   profile.gaming.enable = true;
 
   boot = {
-    supportedFilesystems = [ "zfs" "ntfs" ];
+    supportedFilesystems = [ "ntfs" ];
     zfs.requestEncryptionCredentials = true;
     initrd.availableKernelModules =
       [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -19,9 +19,6 @@
         efiSupport = true;
         version = 2;
         devices = [ "nodev" ];
-
-        # https://nixos.wiki/wiki/NixOS_on_ZFS
-        copyKernels = true;
       };
     };
   };

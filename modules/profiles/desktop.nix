@@ -17,6 +17,7 @@ in {
       enable = true;
       customUser.enable = true;
     };
+
     services.syncthing = {
       folders = {
         dox = {
@@ -28,6 +29,11 @@ in {
           path = "/home/yhrc/.local/share/password-store";
         };
       };
+    };
+
+    system.custom.udev = {
+      hackRF = true;
+      ATmega32U4 = true;
     };
 
     system.custom.x11.enable = true;
@@ -81,5 +87,24 @@ in {
     };
 
     services.tumbler.enable = true;
+
+    services.upower.enable = true;
+
+    services.dbus.enable = true;
+
+    services.avahi.enable = true;
+
+    services.pcscd.enable = true;
+
+    hardware.sane.enable = true;
+
+    #Enable CUPS to print documents.
+    services.printing.enable = true;
+    services.printing.drivers = with pkgs; [
+      gutenprint
+      gutenprintBin
+    ];
+
+    nix.trustedUsers = [ config.system.custom.mainUser.userName ];
   };
 }

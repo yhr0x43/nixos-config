@@ -14,7 +14,10 @@ in {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;
-      config.General.AutoConnect = true;
+      settings = {
+        General.AutoConnect = true;
+        Policy.AutoEnable = true;
+      };
     };
 
     services.blueman.enable = true;

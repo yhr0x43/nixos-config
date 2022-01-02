@@ -43,36 +43,15 @@ in {
       gimp-with-plugins
     ];
 
-    services.avahi.enable = true;
-
     services.deluge = {
       enable = true;
       web.enable = true;
     };
 
-    services.pcscd.enable = true;
-
-    #Enable CUPS to print documents.
-    services.printing.enable = true;
-    services.printing.drivers = with pkgs; [
-      gutenprint
-      gutenprintBin
-    ];
-
-    hardware.sane.enable = true;
-
     services.picom.enable = true;
-    services.upower.enable = true;
-
-    services.dbus.enable = true;
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.mainUser = import ../../home.nix;
-
-    nix.trustedUsers = [ config.system.custom.mainUser.userName ];
-
-    # Way too annoying to manage on a desktop system IMHO
-    networking.firewall.enable = false;
   };
 }

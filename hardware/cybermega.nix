@@ -1,22 +1,8 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ ./common/zfs.nix ./common/udev.nix ];
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0A5E-C2D1";
-    fsType = "vfat";
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    settings = {
-      General.AutoConnect = true;
-      Policy.AutoEnable = true;
-    };
-  };
-
-  services.blueman.enable = true;
+  system.custom.fs.bootUuid = "0A5E-C2D1";
+  system.custom.bluetooth.enable = true;
 
   hardware.pulseaudio = {
     enable = true;
