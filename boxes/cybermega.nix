@@ -1,12 +1,15 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 
 {
   profile.workstation.enable = true;
   profile.gaming.enable = true;
+
+  system.custom.audio.enable = true;
   system.custom.fs.bootUuid = "0A5E-C2D1";
   system.custom.bluetooth.enable = true;
 
-  boot = { supportedFilesystems = [ "ntfs" ];
+  boot = {
+    supportedFilesystems = [ "ntfs" ];
     zfs.requestEncryptionCredentials = true;
     initrd.availableKernelModules =
       [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
@@ -25,8 +28,6 @@
 
   nix.maxJobs = 24;
 
-  services.xserver.wacom.enable = true;
-
   services.dnsmasq = {
     enable = true;
     extraConfig = "address=/k26.local/192.168.1.2";
@@ -40,21 +41,4 @@
 
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
-
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-
-    extraConfig = ''
-      # automatically switch to newly-connected devices
-      load-module module-switch-on-connect
-    '';
-  };
-
-  nixpkgs.config.pulseaudio = true;
-
-  # HackRF configs, hand written rules to not use plugdev
-  environment.systemPackages = with pkgs; [
-    hackrf
-  ];
 }

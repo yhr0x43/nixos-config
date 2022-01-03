@@ -41,6 +41,8 @@ in {
       imagemagick
       libnotify
       gimp-with-plugins
+
+      hackrf
     ];
 
     services.deluge = {
@@ -49,6 +51,8 @@ in {
     };
 
     services.picom.enable = true;
+
+    services.xserver.wacom.enable = true;
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;

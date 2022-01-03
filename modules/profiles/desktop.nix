@@ -12,6 +12,7 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.custom.bluetooth.enable = true;
     system.custom.fonts.enable = true;
     system.custom.syncthing = {
       enable = true;
@@ -30,6 +31,8 @@ in {
         };
       };
     };
+
+    system.custom.audio.enable = true;
 
     system.custom.udev = {
       hackRF = true;
