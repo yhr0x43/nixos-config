@@ -56,16 +56,9 @@ in {
       pavucontrol
 
       # WM relavent derivation
-      dmenu
-      flameshot
-      j4-dmenu-desktop
-
       xfce.thunar
       lxmenu-data
       shared_mime_info
-
-      # Archive manager
-      mate.engrampa
 
       hunspell
       hunspellDicts.en-us

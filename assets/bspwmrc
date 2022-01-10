@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 bspc config active_border_color '#1e1e1e'
 bspc config border_width 4
 bspc config borderless_monocle true
@@ -23,9 +23,6 @@ bspc config window_gap 5
 
 bspc rule -a sun-awt-X11-XDialogPeer state=floating
 
-xrandr --output DisplayPort-0 --mode 3440x1440 --rate 100 --primary
-xrandr --output DisplayPort-2 --mode 1920x1080 --rotate left --left-of DisplayPort-0
-xrandr --output HDMI-A-0 --mode 1920x1080 --below DisplayPort-0
-xsetwacom --set "Wacom One Pen Display 13 Pen stylus" MapToOutput HDMI-A-0
+polybar default &
 
-bspc monitor DisplayPort-0 -d 1 2 3 4 5 6 7 8 9
+autorandr --change

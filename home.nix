@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./home/bspwm.nix ./home/dunst.nix ./home/polybar.nix ./home/zsh.nix ];
+  imports = [ ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ./home/zsh.nix ];
 
   programs.home-manager.enable = true;
 
@@ -33,11 +33,6 @@
   };
 
   programs.dircolors.enable = true;
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-  };
 
   programs.password-store = {
     enable = true;
@@ -108,9 +103,6 @@
 
     (aspellWithDicts (d: [ d.en ]))
   ];
-
-  xsession.enable = true;
-  #xsession.scriptPath = ".hm-xsession";
 
   home.sessionVariables = {
     #TODO: more proper home-cleanup

@@ -29,8 +29,8 @@ in {
 
       windowManager.bspwm = {
         enable = true;
-        configFile = ../../assets/bspwmrc;
-        sxhkd.configFile = ../../assets/sxhkdrc;
+        configFile = ../../../assets/bspwmrc;
+        sxhkd.configFile = import ./sxhkdrc.nix { inherit pkgs; };
       };
       displayManager.defaultSession = "none+bspwm";
 

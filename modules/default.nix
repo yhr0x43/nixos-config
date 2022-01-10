@@ -19,7 +19,7 @@
     ./system/mainUser.nix
     ./system/syncthing.nix
     ./system/udev.nix
-    ./system/x11.nix
+    ./system/x11
 
     ./virtualisation/vfio.nix
     ./virtualisation/libvirt.nix
