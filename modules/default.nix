@@ -7,7 +7,7 @@
 
     ./hardware/amd.nix
 
-    ./profiles/desktop.nix
+    ./profiles/desktop
     ./profiles/workstation.nix
     ./profiles/gaming.nix
 
