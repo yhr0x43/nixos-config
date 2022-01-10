@@ -56,6 +56,8 @@ in {
       pavucontrol
 
       # WM relavent derivation
+      flameshot
+
       xfce.thunar
       lxmenu-data
       shared_mime_info
