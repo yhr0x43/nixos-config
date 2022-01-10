@@ -77,8 +77,6 @@ in {
       mode = "challenge-response";
     };
 
-    # Auto-mount USB drive
-    services.gvfs.enable = true;
 
     # Running GNOME program outside of GNOME
     # Provide Dbus ca.desrt.dconf
@@ -89,18 +87,24 @@ in {
       EDITOR = "nvim";
     };
 
-    services.tumbler.enable = true;
+    programs.gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
+    };
 
-    services.upower.enable = true;
-
-    services.dbus.enable = true;
-
-    services.avahi.enable = true;
-
-    services.pcscd.enable = true;
+    services = {
+      # Auto-mount USB drive
+      gvfs.enable = true;
+      tumbler.enable = true;
+      upower.enable = true;
+      dbus.enable = true;
+      avahi.enable = true;
+      pcscd.enable = true;
+      autorandr.enable = true;
+      picom.enable = true;
+    };
 
     hardware.sane.enable = true;
-
     #Enable CUPS to print documents.
     services.printing.enable = true;
     services.printing.drivers = with pkgs; [

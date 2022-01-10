@@ -50,8 +50,6 @@ in {
       web.enable = true;
     };
 
-    services.picom.enable = true;
-
     services.xserver.wacom.enable = true;
 
     home-manager.useUserPackages = true;
