@@ -55,6 +55,8 @@ in {
       python3 # for passFF
       pavucontrol
 
+      zoom-us
+
       # WM relavent derivation
       flameshot
 
