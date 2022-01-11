@@ -16,11 +16,10 @@ in {
       multimc
       minecraft
       flite              # For Minecraft TTS
-      wine
-      (lowPrio wineWowPackages.full)
       discord
       steam-run-native
       mumble
+      lutris
     ];
 
     programs.steam.enable = true;

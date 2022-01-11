@@ -43,6 +43,11 @@ in {
       gimp-with-plugins
 
       hackrf
+
+      mono4
+      winePackages.fonts
+      wineWowPackages.stagingFull
+      winetricks
     ];
 
     services.deluge = {
