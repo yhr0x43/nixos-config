@@ -4,6 +4,10 @@
 
   services.sxhkd = {
     enable = true;
+    package = pkgs.writeShellScriptBin "sxhkd"
+      ''
+        ${pkgs.coreutils}/bin/env _JAVA_AWT_WM_NONREPARENTING=1 ${pkgs.sxhkd}/bin/sxhkd $@
+      '';
     extraOptions = [ "-r /tmp/sxhkd_out" ];
     keybindings = {
       "super + Escape" = "pkill -USR1 -x sxhkd";
