@@ -34,6 +34,19 @@
 
   programs.dircolors.enable = true;
 
+  programs.gpg = {
+    enable = true;
+    homedir = "${config.xdg.dataHome}/gnupg";
+    # TODO: keys managed by nix
+    mutableKeys = true;
+    mutableTrust = true;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+  };
+
   programs.password-store = {
     enable = true;
     settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store"; 
