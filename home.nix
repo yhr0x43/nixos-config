@@ -42,10 +42,10 @@
     mutableTrust = true;
   };
 
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-  };
+  #services.gpg-agent = {
+  #  enable = true;
+  #  enableSshSupport = true;
+  #};
 
   programs.password-store = {
     enable = true;
