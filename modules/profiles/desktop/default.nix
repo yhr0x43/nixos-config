@@ -82,6 +82,7 @@ in {
     environment.variables = {
       BROWSER = "firefox";
       EDITOR = "nvim";
+      GNUPGHOME = "~/.local/share/gnupg";
     };
 
     programs.gnupg.agent = {

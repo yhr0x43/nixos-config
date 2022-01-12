@@ -6,6 +6,7 @@
     ./sshd-known-hosts-private.nix
     ./sshd-known-hosts-public.nix
     ./syncthing.nix
+    ./zsh.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [

@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ./home/zsh.nix ];
+  imports = [ ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ];
 
   programs.home-manager.enable = true;
 
@@ -34,13 +34,13 @@
 
   programs.dircolors.enable = true;
 
-  programs.gpg = {
-    enable = true;
-    homedir = "${config.xdg.dataHome}/gnupg";
-    # TODO: keys managed by nix
-    mutableKeys = true;
-    mutableTrust = true;
-  };
+  #programs.gpg = {
+  #  enable = true;
+  #  homedir = "${config.xdg.dataHome}/gnupg";
+  #  # TODO: keys managed by nix
+  #  mutableKeys = true;
+  #  mutableTrust = true;
+  #};
 
   #services.gpg-agent = {
   #  enable = true;
