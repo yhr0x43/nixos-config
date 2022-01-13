@@ -24,7 +24,7 @@ in {
       displayManager = {
         autoLogin.enable = true;
         autoLogin.user = cfg.autoLoginUser;
-        lightdm.enable = true;
+        sddm.enable = true;
       };
 
       windowManager.bspwm = {
@@ -46,6 +46,7 @@ in {
         };
       };
     };
+
 
     # Xresources config
     # -----------------
