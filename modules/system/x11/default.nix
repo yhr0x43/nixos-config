@@ -47,6 +47,27 @@ in {
       };
     };
 
+    environment.systemPackages = with pkgs; [
+      flameshot
+
+      xfce.thunar
+      xfce.xfce4-icon-theme
+      lxmenu-data
+      shared_mime_info
+
+      hunspell
+      hunspellDicts.en-us
+    ];
+
+    services = {
+      udisks2.enable = true;
+      gvfs.enable = true;
+      tumbler.enable = true;
+      upower.enable = true;
+      dbus.enable = true;
+      autorandr.enable = true;
+      picom.enable = true;
+    };
 
     # Xresources config
     # -----------------

@@ -57,16 +57,6 @@ in {
 
       zoom-us
       teams
-
-      # WM relavent derivation
-      flameshot
-
-      xfce.thunar
-      lxmenu-data
-      shared_mime_info
-
-      hunspell
-      hunspellDicts.en-us
     ];
 
     #TODO: use u2f
@@ -74,7 +64,6 @@ in {
       enable = true;
       mode = "challenge-response";
     };
-
 
     # Running GNOME program outside of GNOME
     # Provide Dbus ca.desrt.dconf
@@ -91,17 +80,8 @@ in {
       enableSSHSupport = true;
     };
 
-    services = {
-      # Auto-mount USB drive
-      gvfs.enable = true;
-      tumbler.enable = true;
-      upower.enable = true;
-      dbus.enable = true;
-      avahi.enable = true;
-      pcscd.enable = true;
-      autorandr.enable = true;
-      picom.enable = true;
-    };
+    services.pcscd.enable = true;
+    services.avahi.enable = true;
 
     hardware.sane.enable = true;
     #Enable CUPS to print documents.
