@@ -56,6 +56,7 @@ in {
       pavucontrol
 
       zoom-us
+      teams
 
       # WM relavent derivation
       flameshot

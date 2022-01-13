@@ -16,6 +16,7 @@
     "minecraft-launcher"
     "discord"
     "corefonts"
+    "teams"
     "zoom"
   ];
 
