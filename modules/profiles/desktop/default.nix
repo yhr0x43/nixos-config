@@ -51,13 +51,40 @@ in {
 
     time.timeZone = "America/Chicago";
 
+    programs.less = {
+      enable = true;
+      envVariables = {
+        # X = leave content on-screen
+        # F = quit automatically if less than one screenfull
+        # R = raw terminal characters (fixes git diff)
+        #     see http://jugglingbits.wordpress.com/2010/03/24/a-better-less-playing-nice-with-git/
+        LESS = "-FXR";
+        # colored man output
+        # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
+        LESS_TERMCAP_mb = "[01;31m";			# begin blinking
+        LESS_TERMCAP_md = "[01;38;5;74m";		# begin bold
+        LESS_TERMCAP_me = "[0m";				# end mode
+        LESS_TERMCAP_se = "[0m";				# end standout-mode
+        LESS_TERMCAP_so = "[38;5;246m";		# begin standout-mode - info box
+        LESS_TERMCAP_ue = "[0m";				# end underline
+        LESS_TERMCAP_us = "[04;38;5;146m";	# begin underline
+      };
+    };
+
     environment.systemPackages = with pkgs; [
+      ag
+
+      man-pages
+      man-pages-posix
+
       python3 # for passFF
       pavucontrol
 
       zoom-us
       teams
     ];
+
+    documentation.dev.enable = true;
 
     #TODO: use u2f
     security.pam.yubico = {

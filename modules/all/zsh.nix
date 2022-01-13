@@ -14,6 +14,7 @@
       '';
       autosuggestions.enable = true;
       syntaxHighlighting.enable = true;
+	  vteIntegration = true;
 	};
 
     environment.systemPackages = [ pkgs.nix-index ];
