@@ -85,7 +85,6 @@
 
     # Editors
     unstable.jetbrains.idea-community
-    (callPackage ./home/neovim.nix {})
 
     # Misc. Unix-ish tools
     fzf

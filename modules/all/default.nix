@@ -2,6 +2,7 @@
   imports = [
     # TODO: choose a grub theme?
     #./grub.nix
+    ./neovim.nix
     ./programs.nix
     ./sshd-known-hosts-private.nix
     ./sshd-known-hosts-public.nix
