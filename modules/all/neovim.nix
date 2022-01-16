@@ -19,7 +19,7 @@ in {
     vimAlias = true;
     runtime = {
       #FIXME: why etc needed here? seems to be implementation (or documentation) error in nixpkgs
-      "etc/ftplugin/sml.vim".text = "nnoremap <buffer> <F9> :!sml :%p<CR>";
+      "etc/ftplugin/sml.vim".text = ''nnoremap <buffer> <F9> :!sml "%:p"<CR>'';
     };
     configure = {
       customRC = builtins.readFile ../../assets/init.vim;
