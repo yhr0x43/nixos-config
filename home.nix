@@ -8,7 +8,6 @@
 
   home.stateVersion = "21.11";
 
-  services.lorri.enable = true;
   services.syncthing.enable = true;
   services.syncthing.tray.enable = true;
 
@@ -32,21 +31,6 @@
     videos = "${config.home.homeDirectory}/vid";
   };
 
-  programs.dircolors.enable = true;
-
-  #programs.gpg = {
-  #  enable = true;
-  #  homedir = "${config.xdg.dataHome}/gnupg";
-  #  # TODO: keys managed by nix
-  #  mutableKeys = true;
-  #  mutableTrust = true;
-  #};
-
-  #services.gpg-agent = {
-  #  enable = true;
-  #  enableSshSupport = true;
-  #};
-
   programs.password-store = {
     enable = true;
     settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store"; 
@@ -58,14 +42,6 @@
       env.TERM = "xterm-256color";
       font.size = 8;
     };
-  };
-
-  programs.direnv = {
-    enable = true;
-    nix-direnv.enable = true;
-    enableBashIntegration = false;
-    enableFishIntegration = false;
-    enableZshIntegration = true;
   };
 
   programs.zathura.enable = true;

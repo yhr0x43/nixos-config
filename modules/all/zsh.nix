@@ -6,6 +6,9 @@
       histFile = "$HOME/.local/share/zsh/zsh_history";
       ohMyZsh = {
         enable = true;
+        plugins = [
+          "direnv"
+        ];
         theme = "rgm";
       };
       shellInit = ''
@@ -17,5 +20,10 @@
 	  vteIntegration = true;
 	};
 
-    environment.systemPackages = [ pkgs.nix-index ];
+    environment.systemPackages = with pkgs; [
+      nix-index
+
+      direnv
+      nix-direnv-flakes
+    ];
 }
