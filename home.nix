@@ -33,7 +33,19 @@
 
   programs.password-store = {
     enable = true;
-    settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store"; 
+    #FIXME: need to do this since hm sessionVar does not work with nixpkgs managed shell
+    # also wrap the program like this for an env variable feels wrong
+    package = with pkgs; symlinkJoin {
+      name = "pass-with-env";
+      paths = [
+        (writeShellScriptBin "pass"
+        ''
+          ${pkgs.coreutils}/bin/env PASSWORD_STORE_DIR=${config.xdg.dataHome}/password-store ${pkgs.pass}/bin/pass "$@"
+        '')
+      ];
+      postBuild = "ln -s ${pkgs.pass}/bin/passmenu $out";
+    };
+    #settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
   };
 
   programs.alacritty = {
