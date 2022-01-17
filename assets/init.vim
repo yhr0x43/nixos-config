@@ -25,6 +25,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
+let mapleader=","
+
 " GUI and colors
 set mouse=a guicursor= nu rnu noshowmode background=dark tabpagemax=999
 hi Normal guifg=#F8F8F2 guibg=#282A36

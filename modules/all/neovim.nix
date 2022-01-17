@@ -31,6 +31,7 @@ in {
           "vim-nix"
           "vimtex"
           "vim-scarpet"
+          "nerdcommenter"
           "LanguageClient-neovim"
         ]; }
 
