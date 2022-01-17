@@ -50,8 +50,15 @@ in {
     environment.systemPackages = with pkgs; [
       flameshot
 
-      xfce.thunar
-      xfce.xfce4-icon-theme
+      (xfce.thunar.override {
+        thunarPlugins = [
+          xfce.thunar-volman
+        ];
+      })
+      xfce.xfconf
+      gnome.adwaita-icon-theme
+      hicolor-icon-theme
+      lxappearance
       lxmenu-data
       shared_mime_info
 
