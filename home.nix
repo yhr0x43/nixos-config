@@ -106,7 +106,7 @@
 
   home.sessionVariables = {
     #TODO: more proper home-cleanup
-    IPYTHONDIR = "$XDG_CONFIG_HOME/jupyter";
-    JUPYTER_CONFIG_DIR = "$XDG_CONFIG_HOME/jupyter";
+    IPYTHONDIR = "${config.xdg.configHome}/jupyter";
+    JUPYTER_CONFIG_DIR = "${config.xdg.configHome}/jupyter";
   };
 }
