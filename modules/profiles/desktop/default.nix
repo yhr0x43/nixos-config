@@ -86,11 +86,26 @@ in {
 
     documentation.dev.enable = true;
 
-    #TODO: use u2f
-    security.pam.yubico = {
-      enable = true;
-      mode = "challenge-response";
+    #TODO: does re-implementing the services here make sense?
+    #Especiall the project has default ones: https://github.com/maximbaz/yubikey-touch-detector
+    systemd.user.services."yubikey-touch-detector" = {
+      description = "Detects when your YubiKey is waiting for a touch";
+      requires = [ "yubikey-touch-detector.socket" ];
+      wantedBy = [ "default.target" ];
+      serviceConfig = {
+        ExecStart = "${pkgs.yubikey-touch-detector}/bin/yubikey-touch-detector";
+        EnvironmentFile = "-%E/yubikey-touch-detector/service.conf";
+      };
     };
+
+    systemd.user.sockets."yubikey-touch-detector" = {
+      description = "Detects when your YubiKey is waiting for a touch";
+      wantedBy = [ "sockets.target" ];
+      listenStreams = [ "%t/yubikey-touch-detector.socket" ];
+      socketConfig.RemoveOnStop = "yes";
+    };
+
+    security.pam.u2f.enable = true;
 
     # Running GNOME program outside of GNOME
     # Provide Dbus ca.desrt.dconf

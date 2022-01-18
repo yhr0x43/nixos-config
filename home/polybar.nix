@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 let
   colors = {
@@ -75,7 +75,7 @@ in
       inherit colors;
       "bar/default" = {
         modules-left = "bspwm xwindow";
-        modules-center = "date";
+        modules-center = "date yubikey";
         modules-right = "battery filesystem";
       } // bar-common ;
       "module/bspwm" = {
@@ -149,6 +149,15 @@ in
         format.underline = "\${colors.blue}";
 
         label = "%date% %time%";
+      };
+      "module/yubikey" = {
+        type = "custom/script";
+
+        exec = ''${pkgs.ncat}/bin/ncat --unixsock $XDG_RUNTIME_DIR/yubikey-touch-detector.socket | while read -n5 message; do [[ $message = *1 ]] && echo "  " || echo ""; done'';
+        tail = true;
+
+        format-foreground = "#ffffff";
+        format-background = "#ff000";
       };
       "settings" = {
         screenchange-reload = true;
