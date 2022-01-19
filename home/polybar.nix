@@ -76,7 +76,7 @@ in
       "bar/default" = {
         modules-left = "bspwm xwindow";
         modules-center = "date";
-        modules-right = "filesystem";
+        modules-right = "battery filesystem";
       } // bar-common ;
       "module/bspwm" = {
         type = "internal/bspwm";
@@ -100,6 +100,11 @@ in
         label-empty = "%icon%";
         #label-empty-foreground = "\${colors.lightgray}";
         label-empty-padding = 1;
+      };
+      "module/battery" = {
+        type = "internal/battery";
+        battery = "BAT0";
+        adapter = "AC";
       };
       "module/xwindow" = {
         type = "internal/xwindow";
