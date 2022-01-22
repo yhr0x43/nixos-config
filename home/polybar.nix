@@ -157,7 +157,7 @@ in
         tail = true;
 
         format-foreground = "#ffffff";
-        format-background = "#ff000";
+        format-background = "#ff0000";
       };
       "settings" = {
         screenchange-reload = true;
