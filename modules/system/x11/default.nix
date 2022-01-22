@@ -56,6 +56,7 @@ in {
         ];
       })
       xfce.xfconf
+      calcurse
       gnome.adwaita-icon-theme
       hicolor-icon-theme
       lxappearance
