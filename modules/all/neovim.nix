@@ -24,6 +24,7 @@ in {
     configure = {
       customRC = builtins.readFile ../../assets/init.vim;
 
+      #TODO: many plugins and the plugin manager here need update
       vam.knownPlugins = pkgs.vimPlugins // { inherit vim-scarpet; };
       vam.pluginDictionaries = [
         { names = [
@@ -37,12 +38,16 @@ in {
 
         { names = [
           "rust-vim"
-          "deoplete-rust"
+          #"deoplete-rust"
         ]; ft_regex = "^rust\$"; }
 
         { names = [
           "markdown-preview-nvim"
         ]; ft_regex = "^markdown\$"; }
+
+        { names = [
+          "deoplete-lsp"
+        ]; ft_regex = "^c\$"; }
 
         #{ name = "vim-nix"; ft_regex = "^nix\$"; }
       ];

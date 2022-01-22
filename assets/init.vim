@@ -1,8 +1,8 @@
 " set up deoplete
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup=1
 " deoplete rust/racer
 let g:deoplete#sources#rust#racer_binary='/home/yhrc/.cargo/bin/racer'
-"let g:deoplete#sources#rust#rust_source_path='/home/yhrc/rust/src'
+let g:deoplete#sources#rust#rust_source_path='/home/yhrc/src/rust/src'
 
 " config ======================================================================
 
@@ -47,8 +47,17 @@ let g:vimtex_quickfix_mode=0
 let g:tex_conceal='abdmg'
 
 nnoremap <F5> :make<CR>
+nnoremap <F6> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gr :call LanguageClient_textDocument_references()<CR>
+nnoremap <silent> gs :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
 
 let g:LanguageClient_serverCommands = {
+  \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+  \ 'python': ['pyls'],
   \ 'cpp': ['clangd'],
   \ 'c': ['clangd'],
   \ }
