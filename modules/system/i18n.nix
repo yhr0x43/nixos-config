@@ -17,8 +17,9 @@ in {
       supportedLocales = [ "ja_JP.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
       #TODO: switch to fcitx5
       inputMethod = {
-        enabled = "fcitx";
+        enabled = "fcitx5";
         fcitx.engines = with pkgs.fcitx-engines; [ mozc rime ];
+        fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-rime ];
       };
     };
 
