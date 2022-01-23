@@ -22,9 +22,10 @@ in {
       enable = true;
 
       displayManager = {
-        autoLogin.enable = true;
+        autoLogin.enable = false;
         autoLogin.user = cfg.autoLoginUser;
-        sddm.enable = true;
+        lightdm.enable = true;
+        #sddm.enable = true;
       };
 
       windowManager.bspwm = {

@@ -48,14 +48,6 @@
     #settings.PASSWORD_STORE_DIR = "${config.xdg.dataHome}/password-store";
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      env.TERM = "xterm-256color";
-      font.size = 8;
-    };
-  };
-
   programs.zathura.enable = true;
 
   programs.git = {
