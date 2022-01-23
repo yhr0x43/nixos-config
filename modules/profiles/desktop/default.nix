@@ -14,6 +14,7 @@ in {
   config = mkIf cfg.enable {
     system.custom.bluetooth.enable = true;
     system.custom.fonts.enable = true;
+    programs.custom.sway.enable = true;
     system.custom.syncthing = {
       enable = true;
       customUser.enable = true;
@@ -39,7 +40,7 @@ in {
       ATmega32U4 = true;
     };
 
-    system.custom.x11.enable = true;
+    #system.custom.x11.enable = true;
     system.custom.i18n.enable = true;
 
     system.custom.mainUser = {
@@ -49,7 +50,19 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
 
+    services.xserver = {
+      enable = true;
+      displayManager = {
+        autoLogin.enable = false;
+        lightdm.enable = true;
+      };
+    };
+
     time.timeZone = "America/Chicago";
+
+    #qt5.enable = true;
+    #qt5.platformTheme = "gtk2";
+    #qt5.style = "gtk2";
 
     programs.less = {
       enable = true;
@@ -122,8 +135,16 @@ in {
       enableSSHSupport = true;
     };
 
-    services.pcscd.enable = true;
-    services.avahi.enable = true;
+    services = {
+      pcscd.enable = true;
+      avahi.enable = true;
+      udisks2.enable = true;
+      gvfs.enable = true;
+      tumbler.enable = true;
+      upower.enable = true;
+      dbus.enable = true;
+      autorandr.enable = true;
+    };
 
     hardware.sane.enable = true;
     #Enable CUPS to print documents.

@@ -11,6 +11,8 @@
     ./profiles/workstation.nix
     ./profiles/gaming.nix
 
+    ./programs/sway.nix
+
     ./system/audio.nix
     ./system/bluetooth.nix
     ./system/font.nix

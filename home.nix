@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ];
+  imports = [ ];
 
   programs.home-manager.enable = true;
 
@@ -9,7 +9,7 @@
   home.stateVersion = "21.11";
 
   services.syncthing.enable = true;
-  services.syncthing.tray.enable = true;
+  #services.syncthing.tray.enable = true;
 
   xdg.enable = true;
 
