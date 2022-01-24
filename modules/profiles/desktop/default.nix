@@ -50,14 +50,6 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
 
-    services.xserver = {
-      enable = true;
-      displayManager = {
-        autoLogin.enable = false;
-        lightdm.enable = true;
-      };
-    };
-
     time.timeZone = "America/Chicago";
 
     #qt5.enable = true;
@@ -89,6 +81,8 @@ in {
 
       man-pages
       man-pages-posix
+
+      hicolor-icon-theme
 
       python3 # for passFF
       pavucontrol
