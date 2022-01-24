@@ -28,11 +28,19 @@ in {
 
     xdg.portal.wlr.enable = true;
 
-    environment.etc."sway/config.d/outputs.conf".text = ''
-      output HDMI-A-1 mode 3840x2160 pos 0 0
-      output DP-1 mode 1920x1080 pos 1920 2160
-      output DP-2 disable
-    '';
+    environment.etc = {
+      "sway/config.d" = {
+        "/10-systemd".text = ''
+          exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+        '';
+
+        "90-outputs.conf".text = ''
+          output HDMI-A-1 mode 3840x2160 pos 0 0
+          output DP-1 mode 1920x1080 pos 1920 2160
+          output DP-2 disable
+        '';
+      };
+    };
 
     programs.qt5ct.enable = true;
 
@@ -42,14 +50,12 @@ in {
       gsettings-desktop-schemas
       lxappearance
       # Here we but a shell script into path, which lets us start sway.service (after importing the environment of the login shell).
-      (writeShellScriptBin "startsway"
-        (concatStringsSep "\n" [
-          # first import environment variables from the login manager
-          "systemctl --user import-environment"
-          # then start the service
-          "exec systemctl --user start sway.service"
-        ])
-      )
+      (writeShellScriptBin "startsway" ''
+        # first import environment variables from the login manager
+        systemctl --user import-environment
+        # then start the service
+        exec systemctl --user start sway.service
+      '')
     ];
 
     systemd.user.targets.sway-session = {
@@ -71,10 +77,9 @@ in {
       environment.PATH = lib.mkForce null;
       serviceConfig = {
         Type = "simple";
-          #${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway --debug
-        ExecStart = ''
-          ${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway
-        '';
+        ExecStart = "${pkgs.dbus}/bin/dbus-run-session ${pkgs.sway}/bin/sway"
+        #+ " --debug"
+        ;
         Restart = "on-failure";
         RestartSec = 1;
         TimeoutStopSec = 10;
@@ -88,8 +93,6 @@ in {
       wantedBy = [ "graphical-session.target" ];
       partOf = [ "graphical-session.target" ];
       serviceConfig = {
-        # kanshi doesn't have an option to specifiy config file yet, so it looks
-        # at .config/kanshi/config
         ExecStart = let
           kanshi-config = (pkgs.writeText "kanshi-config" ''
               profile {
