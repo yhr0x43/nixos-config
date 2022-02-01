@@ -40,7 +40,7 @@ in {
       ATmega32U4 = true;
     };
 
-    #system.custom.x11.enable = true;
+    system.custom.x11.enable = true;
     system.custom.i18n.enable = true;
 
     system.custom.mainUser = {
@@ -127,6 +127,7 @@ in {
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+      pinentryFlavor = "qt";
     };
 
     services = {

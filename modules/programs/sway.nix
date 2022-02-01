@@ -29,17 +29,15 @@ in {
     xdg.portal.wlr.enable = true;
 
     environment.etc = {
-      "sway/config.d" = {
-        "/10-systemd".text = ''
-          exec "systemctl --user import-environment; systemctl --user start sway-session.target"
-        '';
+      "sway/config.d/10-systemd".text = ''
+        exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+      '';
 
-        "90-outputs.conf".text = ''
-          output HDMI-A-1 mode 3840x2160 pos 0 0
-          output DP-1 mode 1920x1080 pos 1920 2160
-          output DP-2 disable
-        '';
-      };
+      "sway/config.d/90-outputs.conf".text = ''
+        output HDMI-A-1 mode 3840x2160 pos 0 0
+        output DP-1 mode 1920x1080 pos 1920 2160
+        output DP-2 disable
+      '';
     };
 
     programs.qt5ct.enable = true;
