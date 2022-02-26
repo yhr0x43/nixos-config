@@ -75,7 +75,13 @@ in {
       upower.enable = true;
       dbus.enable = true;
       autorandr.enable = true;
-      picom.enable = true;
+    };
+
+    services.picom = {
+      enable = true;
+      backend = "xr_glx_hybrid";
+      fade = true;
+      vSync = true;
     };
 
     # Xresources config
