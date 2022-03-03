@@ -8,6 +8,7 @@ let
 
 in {
   options.system.custom.fs = {
+    enable = mkEnableOption "custom zfs config";
     bootUuid = mkOption {
       default = "0000-0000";
       description = ''
@@ -19,7 +20,7 @@ in {
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     fileSystems."/boot" = {
       device = "/dev/disk/by-uuid/${cfg.bootUuid}";
       fsType = "vfat";
@@ -28,6 +29,25 @@ in {
     # wipe /
     boot.initrd.postDeviceCommands = lib.mkAfter ''
       zfs rollback -r rpool/expendable/wipedonboot@blank
+    '';
+
+    # ZFS services
+    services.zfs = {
+      autoSnapshot.enable = true;
+      autoScrub.enable = true;
+      trim.enable = true;
+    };
+
+    # https://nixos.wiki/wiki/NixOS_on_ZFS
+    boot.loader.grub.copyKernels = true;
+
+    # FIXME: hibernation could be helpful on laptop
+    boot.kernelParams = [ "nohibernate" ];
+
+    boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
+    boot.supportedFilesystems = [ "zfs" ];
+    services.udev.extraRules = ''
+      ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
     '';
 
     fileSystems = {
@@ -53,7 +73,7 @@ in {
         fsType = "zfs";
       };
     };
-
+  } // mkIf true {
     environment.etc = {
       # Remember NixOS configuration
       "nixos".source = "/persist/etc/nixos/";
@@ -83,24 +103,5 @@ in {
         }
       ];
     };
-
-    # ZFS services
-    services.zfs = {
-      autoSnapshot.enable = true;
-      autoScrub.enable = true;
-      trim.enable = true;
-    };
-
-    # https://nixos.wiki/wiki/NixOS_on_ZFS
-    boot.loader.grub.copyKernels = true;
-
-    # FIXME: hibernation could be helpful on laptop
-    boot.kernelParams = [ "nohibernate" ];
-
-    boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-    boot.supportedFilesystems = [ "zfs" ];
-    services.udev.extraRules = ''
-      ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
-    ''; # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
   };
 }

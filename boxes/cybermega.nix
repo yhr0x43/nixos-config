@@ -4,6 +4,7 @@
   profile.workstation.enable = true;
   profile.gaming.enable = true;
 
+  system.custom.fs.enable = true;
   system.custom.fs.bootUuid = "0A5E-C2D1";
 
   boot = {

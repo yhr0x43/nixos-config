@@ -4,21 +4,29 @@
 
   profile.workstation.enable = true;
 
-  system.custom.fs.bootUuid = "0D56-B89B";
-
   systemd.tmpfiles.rules = [
     "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
   ];
 
+  fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
+  in {
+    "/"        = disk "ext4" "f2c570f5-5e13-4c71-ae53-32627b7c17da";
+    "/boot"    = disk "vfat" "ECC8-A7DD";
+    "/nix"     = disk "ext4" "51c2c29b-d73a-4f06-89fb-1ed26ffcfb9b";
+    "/persist" = disk "ext4" "9ff01eeb-f39f-4aca-ab09-aac809b10669";
+    "/home"    = disk "ext4" "6928d06b-9c7c-4526-8094-7a49f3d209ea";
+  };
+
+  swapDevices = [ { device = "/dev/disk/by-uuid/4f051bca-6f65-4bf8-903a-183575b6b3ae"; } ];
+
   boot = {
-    supportedFilesystems = [ "zfs" ];
-    zfs.requestEncryptionCredentials = true;
     initrd.availableKernelModules =
-      [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
+      [ "nvme" "usbhid" "usb_storage" "sd_mod" ];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
+        useOSProber = true;
         efiSupport = true;
         version = 2;
         devices = [ "nodev" ];
