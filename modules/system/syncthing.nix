@@ -13,11 +13,12 @@ in {
     customUser.enable = mkEnableOption ''run syncthing as system.custom.mainUser'';
   };
 
-  config = mkIf cfg.enable {
+  #FIXME: this is too hacky (is recursiveUpdate mkIfs the way to do it?)
+  config = recursiveUpdate (mkIf cfg.enable {
     services.syncthing = {
       enable = true;
-      cert = toString ../secrets/syncthing/cert.pem;
-      key = toString ../secrets/syncthing/key.pem;
+      cert = toString ../../secrets/syncthing/cert.pem;
+      key = toString ../../secrets/syncthing/key.pem;
 
       overrideDevices = true;
       devices = let
@@ -32,7 +33,7 @@ in {
       in (device "k26"
         "A6U3CEA-2UV6CKO-BCAUZYI-P6VQ76M-GQ33Q43-GSDTVBA-R7FBINT-TRGU6QP")
       // (device "tpx1c"
-        "2T4GJCW-HWQZ52B-DD6LF62-ALJERG5-P3S4CIJ-O4ULWNO-IQB4LFO-N5H5OQM")
+        "7RHVCK4-ZPK6ITD-HES2N4M-LKW3NBV-S4T5257-Z3SWJPJ-F47VKCO-WHQWCAN")
       // (device "cybermega"
         "P6ZS6XU-AUHWG7S-BJTFDEO-ABPDFLA-YBWB2T2-XV52M7D-NVZAYAE-IWFT3QJ")
       // (device "nut"
@@ -51,14 +52,15 @@ in {
           devices = [ "k26" "tpx1c" "cybermega" "nut" ];
         };
       };
-    } // mkIf cfg.customUser.enable {
-      # use home-manager to launch in user session
-      systemService = false;
+    };}) (mkIf cfg.customUser.enable {
+      services.syncthing = {
+        # use home-manager to launch in user session
+        systemService = false;
 
-      user = config.system.custom.mainUser.userName;
-      group = "users";
-      dataDir = config.users.users.mainUser.home;
-      configDir = "${config.users.users.mainUser.home}/.config/syncthing";
-    };
-  };
+        user = config.system.custom.mainUser.userName;
+        group = "users";
+        dataDir = config.users.users.mainUser.home;
+        configDir = "${config.users.users.mainUser.home}/.config/syncthing";
+      };
+    });
 }

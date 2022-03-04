@@ -6,7 +6,6 @@
     ./programs.nix
     ./sshd-known-hosts-private.nix
     ./sshd-known-hosts-public.nix
-    ./syncthing.nix
     ./zsh.nix
   ];
 
