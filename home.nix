@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [ ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ];
+  imports = [ ./home/alacritty.nix ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ];
 
   programs.home-manager.enable = true;
 
