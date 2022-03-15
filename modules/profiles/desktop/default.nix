@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     system.custom.bluetooth.enable = true;
     system.custom.fonts.enable = true;
-    programs.custom.sway.enable = true;
+    #programs.custom.sway.enable = true;
     system.custom.syncthing = {
       enable = true;
       customUser.enable = true;
@@ -86,7 +86,9 @@ in {
 
       python3 # for passFF
       pavucontrol
+      xclip
 
+      # NONFREE
       zoom-us
       teams
     ];
@@ -121,6 +123,7 @@ in {
     environment.variables = {
       BROWSER = "firefox";
       EDITOR = "nvim";
+      TERM = "xterm-256color";
       #GNUPGHOME = "~/.local/share/gnupg";
     };
 
@@ -139,6 +142,7 @@ in {
       upower.enable = true;
       dbus.enable = true;
       autorandr.enable = true;
+      lorri.enable = true;
     };
 
     hardware.sane.enable = true;
@@ -147,6 +151,9 @@ in {
     services.printing.drivers = with pkgs; [
       gutenprint
       gutenprintBin
+      cnijfilter_2_80
+      cnijfilter_4_00
+      cnijfilter2
     ];
 
     nix.trustedUsers = [ config.system.custom.mainUser.userName ];
