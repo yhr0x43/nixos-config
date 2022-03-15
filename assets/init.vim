@@ -7,11 +7,20 @@ let g:deoplete#sources#rust#rust_source_path='/home/yhrc/src/rust/src'
 " config ======================================================================
 
 " TODO Directory Setting
+set undofile
 syntax enable
 
 set number
 set relativenumber
-set colorcolumn=80
+set colorcolumn=100
+
+let g:indentLine_concealcursor=''
+let g:indentLine_conceallevel=0
+"
+"https://vi.stackexchange.com/questions/422/displaying-tabs-as-characters
+"set list
+"set listchars=eol:⏎,tab:␉·,trail:␠,nbsp:⎵
+
 
 set incsearch
 set hlsearch
@@ -21,7 +30,9 @@ nnoremap ,<space> :nohlsearch<CR>
 set scrolloff=7
 
 set autoindent
-set tabstop=4
+"set tabstop=4
+set smarttab
+set expandtab
 set softtabstop=4
 set shiftwidth=4
 
@@ -33,7 +44,7 @@ hi Normal guifg=#F8F8F2 guibg=#282A36
 hi Statement ctermfg=yellow
 hi LineNr ctermfg=darkgrey
 hi CursorLineNr ctermfg=grey
-hi ColorColumn ctermbg=black
+hi ColorColumn ctermbg=darkgrey
 hi FoldColumn ctermbg=none
 hi Pmenu ctermbg=darkgrey
 hi MatchParen cterm=bold ctermbg=darkgrey ctermfg=none
@@ -60,4 +71,6 @@ let g:LanguageClient_serverCommands = {
   \ 'python': ['pyls'],
   \ 'cpp': ['clangd'],
   \ 'c': ['clangd'],
+  \ 'hs': ['haskell-language-server'],
+  \ 'lhs': ['haskell-language-server'],
   \ }

@@ -49,6 +49,10 @@ in {
           "deoplete-lsp"
         ]; ft_regex = "^c\$"; }
 
+        { names = [
+          "haskell-vim"
+        ]; ft_regex = "^l\\?hs\$"; }
+
         #{ name = "vim-nix"; ft_regex = "^nix\$"; }
       ];
     };
