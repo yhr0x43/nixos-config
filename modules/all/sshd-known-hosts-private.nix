@@ -9,14 +9,6 @@
       publicKey =
         "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBE0mU9dg9jDSCWfYSUjEApT3IjZKiBui9VJIFy/VL3K4dcXk5jSe1s4lf8Dd73lXhHEZSO6lrhJK/tGpibI8wgs=";
     };
-    "yhrc.xyz" = {
-      hostNames = [
-        "yhrc.xyz"
-        "35.245.138.111"
-      ];
-      publicKey =
-        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCadjYivMsjhTgDsSb7aw81SgCCo09De3yvfOvbZ7ez/67afOaXVLHZdqsd8oR4m6Zd3YHseyixufY56Wvb3mgM=";
-    };
     "[cn.yhrc.xyz]:29321" = {
       hostNames = [
         "[cn.yhrc.xyz]:29321"
