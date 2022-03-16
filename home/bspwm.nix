@@ -54,6 +54,9 @@
         top_padding = 30;
         window_gap = 5;
     };
+    rules = {
+      "pinentry".state = "floating";
+    };
     startupPrograms = [
       "autorandr -c"
     ];
