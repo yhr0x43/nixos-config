@@ -2,14 +2,6 @@
 { config, lib, ... }: {
 
   services.openssh.knownHosts = {
-    "[cn.yhrc.xyz]:29321" = {
-      hostNames = [
-        "[cn.yhrc.xyz]:29321"
-        "[104.128.94.169]:29321"
-      ];
-      publicKey =
-        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCadjYivMsjhTgDsSb7aw81SgCCo09De3yvfOvbZ7ez/67afOaXVLHZdqsd8oR4m6Zd3YHseyixufY56Wvb3mgM=";
-    };
     "[cn2.yhrc.xyz]:63916" = {
       hostNames = [
         "[cn2.yhrc.xyz]:63916"
