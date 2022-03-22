@@ -27,10 +27,7 @@
 
   nix.maxJobs = 24;
 
-  services.dnsmasq = {
-    enable = true;
-    extraConfig = "address=/k26.local/192.168.1.2";
-  };
+  services.dnsmasq.enable = true;
 
   networking.useDHCP = true;
   networking.interfaces.enp8s0.useDHCP = true;
