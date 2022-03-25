@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, home-manager, lib, pkgs, ... }:
 
 with lib;
 
@@ -14,7 +14,6 @@ in {
   config = mkIf cfg.enable {
     system.custom.bluetooth.enable = true;
     system.custom.fonts.enable = true;
-    #programs.custom.sway.enable = true;
     system.custom.syncthing = {
       enable = true;
       customUser.enable = true;
@@ -49,6 +48,10 @@ in {
       #TODO: manage wireshark in system.custom.mainUser
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
+
+    programs.custom.emacs.enable = true;
+
+    programs.light.enable= true;
 
     time.timeZone = "America/Chicago";
 
@@ -151,11 +154,12 @@ in {
     services.printing.drivers = with pkgs; [
       gutenprint
       gutenprintBin
-      cnijfilter_2_80
-      cnijfilter_4_00
-      cnijfilter2
     ];
 
     nix.trustedUsers = [ config.system.custom.mainUser.userName ];
+
+    home-manager.useUserPackages = true;
+    home-manager.useGlobalPkgs = true;
+    home-manager.users.mainUser = import ../../../home.nix;
   };
 }
