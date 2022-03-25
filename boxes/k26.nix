@@ -2,7 +2,7 @@
 
 {
   system.custom.fs.enable = true;
-  system.custom.fs.bootUuid = "0A5E-C2D1";
+  system.custom.fs.bootUuid = "";
 
   boot = {
     initrd.availableKernelModules =
@@ -26,7 +26,7 @@
   #networking.interfaces.enp8s0.useDHCP = true;
 
   networking.hostName = "k26";
-  networking.hostId = "6964344f";
+  networking.hostId = "8dcfb167";
 
   hardware.enableRedistributableFirmware = true;
 }
