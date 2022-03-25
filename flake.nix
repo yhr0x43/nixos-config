@@ -40,10 +40,9 @@
       ./modules
 
       home-manager.nixosModules.home-manager
-      {
-        nixpkgs.overlays = [ overlay-unstable extra-pkgs nur.overlay ];
-        # Let 'nixos-version --json' know about the Git revision of this flake.
-      }
+
+      { nixpkgs.overlays = [ overlay-unstable extra-pkgs nur.overlay ]; }
+      # Let 'nixos-version --json' know about the Git revision of this flake.
 
       ({ lib, pkgs, nix, ... }: {
         system.stateVersion = "21.11";
@@ -55,6 +54,7 @@
         };
 
         nix.package = pkgs.nixFlakes;
+        nix.autoOptimiseStore = true;
 
         nix.extraOptions = "experimental-features = nix-command flakes";
         system.configurationRevision = lib.mkIf (self ? rev) self.rev;
