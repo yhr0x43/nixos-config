@@ -37,7 +37,7 @@ in {
       # https://nixos.wiki/wiki/NixOS_on_ZFS
       boot.loader.grub.copyKernels = true;
 
-      # FIXME: hibernation could be helpful on laptop
+      # NOTE Because of this, zfs should not be used with laptop
       boot.kernelParams = [ "nohibernate" ];
 
       boot.initrd.supportedFilesystems = ["zfs"]; # boot from zfs

@@ -13,7 +13,6 @@ in {
     customUser.enable = mkEnableOption ''run syncthing as system.custom.mainUser'';
   };
 
-  #FIXME: this is too hacky (is recursiveUpdate mkIfs the way to do it?)
   config = mkMerge [
     (mkIf cfg.enable {
       services.syncthing = {
