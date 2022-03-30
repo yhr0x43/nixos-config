@@ -31,7 +31,7 @@ in {
             };
           };
         in (device "k26"
-          "A6U3CEA-2UV6CKO-BCAUZYI-P6VQ76M-GQ33Q43-GSDTVBA-R7FBINT-TRGU6QP")
+          "5HN4Z3U-XLLX7OX-O7K2WDG-KNZBBWF-MVXJFKR-SRWHYNO-3BFEHVY-Z3HXFQ7")
         // (device "tpx1c"
           "7RHVCK4-ZPK6ITD-HES2N4M-LKW3NBV-S4T5257-Z3SWJPJ-F47VKCO-WHQWCAN")
         // (device "cybermega"
