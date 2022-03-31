@@ -35,7 +35,7 @@ in {
         config = ./init.el;
 
         # Package is optional, defaults to pkgs.emacs
-        package = pkgs.emacsGit;
+        package = pkgs.emacsUnstable;
 
         # By default emacsWithPackagesFromUsePackage will only pull in
         # packages with `:ensure`, `:ensure t` or `:ensure <package name>`.

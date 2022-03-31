@@ -17,7 +17,7 @@
     #appimage-run
     nix-index
     patchelf
-    #unstable.cachix
+    cachix
     #unstable.nix-tree
   ];
 
