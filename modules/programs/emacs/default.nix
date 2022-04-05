@@ -17,13 +17,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    nixpkgs.overlays = [
-      (import (builtins.fetchTarball {
-        url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-        sha256 = "1y0cnhyyv0zdql6r9x61f5jkqxi6v9px6ll04mbl420n7v787f6x";
-      }))
-    ];
-
     environment.systemPackages = [
       (pkgs.emacsWithPackagesFromUsePackage {
         # Your Emacs config file. Org mode babel files are also

@@ -19,9 +19,11 @@
 
     nur.url = github:nix-community/NUR;
 
+    emacs-overlay.url = github:nix-community/emacs-overlay;
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, emacs-overlay }:
   let
 
     system = "x86_64-linux";
@@ -41,7 +43,7 @@
 
       home-manager.nixosModules.home-manager
 
-      { nixpkgs.overlays = [ overlay-unstable extra-pkgs nur.overlay ]; }
+      { nixpkgs.overlays = [ overlay-unstable extra-pkgs nur.overlay emacs-overlay.overlay ]; }
       # Let 'nixos-version --json' know about the Git revision of this flake.
 
       ({ lib, pkgs, nix, ... }: {
