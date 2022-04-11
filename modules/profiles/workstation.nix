@@ -51,5 +51,7 @@ in {
     };
 
     services.xserver.wacom.enable = true;
+
+    networking.firewall.enable = false;
   };
 }

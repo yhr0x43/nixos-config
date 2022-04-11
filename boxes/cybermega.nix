@@ -42,4 +42,21 @@
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.10.10.2/24" ];
   };
+
+  services.nginx = {
+    enable = true;
+    virtualHosts.test = {
+      listen = [ { addr = "0.0.0.0"; port = 80; } ];
+      locations = {
+        "/" = {
+          root = "/var/www/html";
+          index = "index.html";
+          extraConfig = ''ssi on;'';
+        };
+        #"~ '\\.shtml$'" = {
+        #  return = "404";
+        #};
+      };
+    };
+  };
 }
