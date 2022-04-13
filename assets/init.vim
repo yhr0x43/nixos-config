@@ -68,7 +68,7 @@ nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<CR>
 
 let g:LanguageClient_serverCommands = {
   \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-  \ 'python': ['pyls'],
+  \ 'python': ['pylsp'],
   \ 'cpp': ['clangd'],
   \ 'c': ['clangd'],
   \ 'hs': ['haskell-language-server'],
