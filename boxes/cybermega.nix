@@ -38,17 +38,8 @@
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
 
-  networking.firewall.allowedUDPPorts = [ 51820 ];
+  networking.custom.wireguard.enable = true;
   networking.wireguard.interfaces.wg0 = {
     ips = [ "10.10.10.2/24" ];
-    listenPort = 51820;
-    privateKeyFile = "/persist/etc/nixos/secrets/wireguard-keys/private";
-    peers = [
-      { publicKey = "82lqun2s77tTgQKVUMxWldyW043pq3jQMt+kDElnPhY=";
-        allowedIPs = [ "10.10.10.0/24" ];
-        endpoint = "cn.yhrc.xyz:51820";
-        persistentKeepalive = 25;
-      }
-    ];
   };
 }

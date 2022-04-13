@@ -14,6 +14,8 @@
     ./programs/emacs
     ./programs/sway.nix
 
+    ./networking/wireguard.nix
+
     ./system/audio.nix
     ./system/bluetooth.nix
     ./system/font.nix

@@ -41,6 +41,13 @@
   networking.hostName = "tpx1c";
   networking.hostId = "aa222655";
 
+  services.fprintd.enable = true;
+
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
+
+  networking.custom.wireguard.enable = true;
+  networking.wireguard.interfaces.wg0 = {
+    ips = [ "10.10.10.3/24" ];
+  };
 }
