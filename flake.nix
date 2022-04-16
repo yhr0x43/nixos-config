@@ -41,6 +41,8 @@
     common-modules = [
       ./modules
 
+      ./cachix.nix
+
       home-manager.nixosModules.home-manager
 
       { nixpkgs.overlays = [ overlay-unstable extra-pkgs nur.overlay emacs-overlay.overlay ]; }
