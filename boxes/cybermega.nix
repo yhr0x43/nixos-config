@@ -59,4 +59,10 @@
       };
     };
   };
+
+  environment.systemPackages = [
+    ((pkgs.gradleGen.override {
+      java = pkgs.jdk17;
+    }).gradle_latest)
+  ];
 }
