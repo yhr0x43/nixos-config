@@ -9,15 +9,11 @@
   home.stateVersion = "21.11";
 
   services.syncthing.enable = true;
-  #services.syncthing.tray.enable = true;
 
   xdg.enable = true;
 
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  xdg.mimeApps.defaultApplications = {
-    "application/pdf" = [ "zathura.desktop" ];
-  };
 
   xdg.userDirs = {
     enable = true;
@@ -33,6 +29,7 @@
 
   programs.password-store = {
     enable = true;
+    # The wrapping happened here so pass can be aware of config.xdg.dataHome
     package = with pkgs; symlinkJoin {
       name = "pass-with-env";
       paths = [ (writeShellScriptBin "pass" ''
@@ -60,12 +57,10 @@
     filezilla
 
     # Editors
-    unstable.jetbrains.idea-community
+    jetbrains.idea-community
 
     # Misc. Unix-ish tools
     fzf
-    sshfs
-    pv
     psensor
     ncdu
     zeal
@@ -91,10 +86,4 @@
 
     (aspellWithDicts (d: [ d.en ]))
   ];
-
-  home.sessionVariables = {
-    #TODO: more proper home-cleanup
-    IPYTHONDIR = "${config.xdg.configHome}/jupyter";
-    JUPYTER_CONFIG_DIR = "${config.xdg.configHome}/jupyter";
-  };
 }
