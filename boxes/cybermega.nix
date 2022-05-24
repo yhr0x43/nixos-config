@@ -8,6 +8,7 @@
   system.custom.fs.bootUuid = "0A5E-C2D1";
 
   boot = {
+    kernelParams = [ "acpi=off" ]; # FIXME screen freeze on loading module amdgpu, suspect BIOS issue
     supportedFilesystems = [ "ntfs" ];
     zfs.requestEncryptionCredentials = true;
     initrd.availableKernelModules =
