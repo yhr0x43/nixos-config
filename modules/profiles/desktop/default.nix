@@ -161,5 +161,7 @@ in {
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
     home-manager.users.mainUser = import ../../../home.nix;
+
+    networking.firewall.enable = false;
   };
 }
