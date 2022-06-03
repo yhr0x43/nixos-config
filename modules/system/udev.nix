@@ -10,6 +10,7 @@ in {
   options.system.custom.udev = {
     hackRF = mkEnableOption "udev rule to use uaccess for hackrf";
     ATmega32U4 = mkEnableOption "udev rule to use uaccess for writing ATmega32U4 DFU";
+    feitianFIDO = mkEnableOption "udev rule for feitian FIDO U2F devices";
   };
 
   config.services.udev.extraRules = concatStrings [
@@ -32,6 +33,13 @@ in {
     (optionalString cfg.ATmega32U4 ''
       # ATmega32U4
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="2ff4", TAG+="uaccess"
+    '')
+
+    (optionalString cfg.feitianFIDO ''
+      ACTION!="add|change", GOTO="u2f_end"
+      # Feitian ePass FIDO, BioPass FIDO2, KeyID U2F
+      KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="096e", ATTRS{idProduct}=="0850|0852|0853|0854|0856|0858|085a|085b|085d|085f|0862|0864|0865|0866|0867", TAG+="uaccess", GROUP="plugdev", MODE="0660"
+      LABEL="u2f_end"
     '')
 
   ];
