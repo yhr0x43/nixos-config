@@ -42,13 +42,13 @@ XF86AudioPlay
 	${pkgs.playerctl}/bin/playerctl play-pause
 
 XF86Audio{LowerVolume,RaiseVolume}
-	${pkgs.pulseaudio}/bin/pactl set-sink-volume 3 {-2%,+2%}
+	${pkgs.pulseaudio}/bin/pactl set-sink-volume @DEFAULT_SINK@ {-2%,+2%}
 
 XF86AudioMute
-	${pkgs.pulseaudio}/bin/pactl set-sink-mute 3 toggle
+	${pkgs.pulseaudio}/bin/pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86MonBrightness{Down,Up}
-	${pkgs.light}/bin/light {-U 5,-A 5}
+	${pkgs.light}/bin/light {-U,-A} 5
 
 Print
 	${pkgs.flameshot}/bin/flameshot gui
