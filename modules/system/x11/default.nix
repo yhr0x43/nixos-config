@@ -64,8 +64,7 @@ in {
       lxmenu-data
       shared_mime_info
 
-      hunspell
-      hunspellDicts.en-us
+      (hunspellWithDicts (with hunspellDicts; [ en-us ]))
     ];
 
     services = {

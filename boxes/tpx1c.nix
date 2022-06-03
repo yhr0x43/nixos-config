@@ -3,6 +3,7 @@
 {
 
   profile.workstation.enable = true;
+  profile.gaming.enable = true;
 
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
   systemd.tmpfiles.rules = [
@@ -23,6 +24,8 @@
   boot = {
     initrd.availableKernelModules =
       [ "nvme" "usbhid" "usb_storage" "sd_mod" ];
+    initrd.supportedFilesystems = ["zfs"];
+    supportedFilesystems = ["zfs"];
     loader = {
       efi.canTouchEfiVariables = true;
       grub = {
