@@ -84,6 +84,7 @@
 
     python38Packages.xdot
 
-    (aspellWithDicts (d: [ d.en ]))
+    (aspellWithDicts (d: [ d.en d.en-computers ]))
+
   ];
 }
