@@ -49,6 +49,7 @@
     package = pkgs.gitFull;
     userEmail = "yhr0x43@gmail.com";
     userName = "yhr0x43";
+    extraConfig = { safe.directory = "/persist/etc/nixos"; };
   };
 
   home.packages = with pkgs; [
