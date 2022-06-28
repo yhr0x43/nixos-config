@@ -74,7 +74,6 @@
     # Note-taking
     xournalpp
     simple-scan
-    texlive.combined.scheme-full
 
     # Media
     mpv
