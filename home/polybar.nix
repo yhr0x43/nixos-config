@@ -153,7 +153,7 @@ in
       "module/yubikey" = {
         type = "custom/script";
 
-        exec = ''${pkgs.ncat}/bin/ncat --unixsock $XDG_RUNTIME_DIR/yubikey-touch-detector.socket | while read -n5 message; do [[ $message = *1 ]] && echo "  " || echo ""; done'';
+        exec = ''${pkgs.nmap}/bin/ncat --unixsock $XDG_RUNTIME_DIR/yubikey-touch-detector.socket | while read -n5 message; do [[ $message = *1 ]] && echo "  " || echo ""; done'';
         tail = true;
 
         format-foreground = "#ffffff";
