@@ -80,7 +80,7 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      ag
+      silver-searcher
 
       man-pages
       man-pages-posix

@@ -62,7 +62,7 @@ in {
       hicolor-icon-theme
       lxappearance
       lxmenu-data
-      shared_mime_info
+      shared-mime-info
 
       (hunspellWithDicts (with hunspellDicts; [ en-us ]))
     ];

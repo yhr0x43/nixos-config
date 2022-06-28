@@ -6,7 +6,7 @@
   home.username = "yhrc";
   home.homeDirectory = "/home/yhrc";
 
-  home.stateVersion = "21.11";
+  home.stateVersion = "22.05";
 
   services.syncthing.enable = true;
 

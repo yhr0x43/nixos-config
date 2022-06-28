@@ -45,7 +45,7 @@ in {
         # symbol fonts
         # ------------
         powerline-fonts
-        font-awesome-ttf
+        font-awesome
         fira-code
 
         # shell font
