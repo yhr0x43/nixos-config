@@ -21,9 +21,15 @@
 
     emacs-overlay.url = github:nix-community/emacs-overlay;
 
+    nix-doom-emacs = {
+      url = github:vlaci/nix-doom-emacs;
+      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.emacs-overlay.follows = "emacs-overlay";
+    };
+
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, emacs-overlay }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, nix-doom-emacs, emacs-overlay }:
   let
 
     system = "x86_64-linux";
@@ -84,6 +90,20 @@
         nixos-hardware.nixosModules.lenovo-thinkpad-x1
 
         ./boxes/tpx1c.nix
+        {
+          home-manager.users.mainUser = { pkgs, ... }: {
+            imports = [ nix-doom-emacs.hmModule ];
+            programs.doom-emacs = {
+              enable = true;
+              doomPrivateDir = ./assets/doom.d;
+              emacsPackagesOverlay = self: super: {
+                # fixes https://github.com/vlaci/nix-doom-emacs/issues/394
+                gitignore-mode = pkgs.emacsPackages.git-modes;
+                gitconfig-mode = pkgs.emacsPackages.git-modes;
+              };
+            };
+          };
+        }
       ] ++ common-modules;
     };
 

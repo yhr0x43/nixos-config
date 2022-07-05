@@ -1,5 +1,17 @@
-{ config, pkgs, ... }: {
-  imports = [ ./home/alacritty.nix ./home/autorandr.nix ./home/dunst.nix ./home/polybar.nix ./home/rime.nix ];
+{
+  config,
+  pkgs,
+  # nix-doom-emacs,
+  ...
+}: {
+  imports = [
+    ./home/alacritty.nix
+    ./home/autorandr.nix
+    ./home/dunst.nix
+    ./home/polybar.nix
+    ./home/rime.nix
+    # nix-doom-emacs.hmModule
+  ];
 
   programs.home-manager.enable = true;
 
@@ -26,6 +38,17 @@
     templates = "${config.home.homeDirectory}/Templates";
     videos = "${config.home.homeDirectory}/vid";
   };
+
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomPrivateDir = ./doom.d;
+
+  #   emacsPackagesOverlay = self: super: {
+  #     # fixes https://github.com/vlaci/nix-doom-emacs/issues/394
+  #     gitignore-mode = pkgs.emacsPackages.git-modes;
+  #     gitconfig-mode = pkgs.emacsPackages.git-modes;
+  #   };
+  # };
 
   programs.password-store = {
     enable = true;
