@@ -89,11 +89,6 @@
     ncdu
     zeal
 
-    # Reverse engineering
-    #unstable.ghidra-bin
-    #jd-gui
-    #unstable.python38Packages.binwalk-full
-
     # Note-taking
     xournalpp
     simple-scan
