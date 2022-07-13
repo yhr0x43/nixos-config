@@ -19,17 +19,26 @@
 
     nur.url = github:nix-community/NUR;
 
-    emacs-overlay.url = github:nix-community/emacs-overlay;
+    emacs-overlay = {
+      url = github:nix-community/emacs-overlay;
+    };
+
+    
+    straight = {
+      url = "github:raxod502/straight.el/develop";
+      flake = false;
+    };
 
     nix-doom-emacs = {
       url = github:vlaci/nix-doom-emacs;
       # inputs.nixpkgs.follows = "nixpkgs";
       inputs.emacs-overlay.follows = "emacs-overlay";
+      inputs.straight.follows = "straight";
     };
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, nix-doom-emacs, emacs-overlay }:
+  outputs = inputs@{self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, nix-doom-emacs, emacs-overlay, ...}:
   let
 
     system = "x86_64-linux";
@@ -91,17 +100,20 @@
 
         ./boxes/tpx1c.nix
         {
+          systemd.services.NetworkManager-wait-online.enable = false;
           home-manager.users.mainUser = { pkgs, ... }: {
             imports = [ nix-doom-emacs.hmModule ];
             programs.doom-emacs = {
               enable = true;
               doomPrivateDir = ./assets/doom.d;
+              emacsPackage = pkgs.emacs28NativeComp;
               emacsPackagesOverlay = self: super: {
                 # fixes https://github.com/vlaci/nix-doom-emacs/issues/394
                 gitignore-mode = pkgs.emacsPackages.git-modes;
                 gitconfig-mode = pkgs.emacsPackages.git-modes;
               };
             };
+            services.emacs.enable = true;
           };
         }
       ] ++ common-modules;
