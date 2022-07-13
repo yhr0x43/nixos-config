@@ -3,25 +3,26 @@
 {
   programs.zsh = {
     enable = true;
+    enableAutosuggestions = true;
+    enableSyntaxHighlighting = true;
+    enableVteIntegration = true;
     dotDir = ".config/zsh";
     history.path = "${config.xdg.dataHome}/zsh/zsh_history";
-    prezto = {
+    initExtra = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
+    oh-my-zsh = {
       enable = true;
-      editor.dotExpansion = true;
-      prompt = {
-        pwdLength = "long";
-        #showReturnVal = true;
-        theme = "pure";
-      };
-      #FIXME: hack around broken showReturnVal in nixpkgs
-      #https://github.com/nix-community/home-manager/blob/839645caf35b7004d3422fbdba6db1d762a410d0/modules/programs/zsh/prezto.nix#L446
-      extraConfig = "zstyle ':prezto:module:prompt' show-return-val 'yes'";
-      utility.safeOps = false;
-    };
-    shellAliases = {
-      # Is "nocorrect rm -I" desired?"
-      rm = "rm -I";
+      plugins = [ "direnv" "pass" ];
+      theme = "rgm";
     };
   };
+
   programs.nix-index.enable = true;
+
+  home.packages = with pkgs; [
+    nix-index
+    direnv
+    nix-direnv-flakes
+  ];
 }

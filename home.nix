@@ -10,6 +10,7 @@
     ./home/dunst.nix
     ./home/polybar.nix
     ./home/rime.nix
+    ./home/zsh.nix
     # nix-doom-emacs.hmModule
   ];
 

@@ -6,7 +6,6 @@
     ./programs.nix
     ./sshd-known-hosts-private.nix
     ./sshd-known-hosts-public.nix
-    ./zsh.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -33,4 +32,6 @@
   console.font = "Lat2-Terminus16";
   console.keyMap = "us";
   services.xserver.layout = "us";
+
+  environment.pathsToLink = [ "/share/zsh" ];
 }
