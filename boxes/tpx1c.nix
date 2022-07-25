@@ -46,6 +46,8 @@
 
   services.fprintd.enable = true;
 
+  programs.kdeconnect.enable = true;
+
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
 
