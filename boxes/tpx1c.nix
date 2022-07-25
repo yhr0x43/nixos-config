@@ -49,10 +49,7 @@
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
 
-  networking.custom.wireguard.enable = true;
-  networking.wireguard.interfaces.wg0 = {
-    ips = [ "10.10.10.3/24" ];
-  };
+  services.tailscale.enable = true;
 
   networking.hosts = {
     "127.0.0.1" = [ "analyze.site" ];
