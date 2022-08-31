@@ -129,5 +129,14 @@
         ./boxes/k26.nix
       ] ++ common-modules;
     };
+
+    nixosConfigurations.frame = nixpkgs.lib.nixosSystem{
+      inherit system;
+      modules = [
+        nixos-hardware.nixosModules.framework
+
+        ./boxes/frame.nix
+      ] ++ common-modules;
+    };
   };
 }
