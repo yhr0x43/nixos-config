@@ -19,14 +19,14 @@
 
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
   in {
-    "/"        = disk "btrfs" "fa660e70-6e0f-4da9-8c79-4fc01f9f504a";
-    "/boot"    = disk "vfat"  "F5BA-F32B";
-    "/nix"     = disk "ext4"  "dd9e6a97-d200-4d65-97e4-eb99b98ea277";
-    "/persist" = disk "ext4"  "f387b609-f85b-4595-9b7c-dc4c188c2fb1";
-    "/home"    = disk "ext4"  "8f899207-ab8c-4288-9469-fa626521e4db";
+    "/"        = disk "btrfs" "5c4ce66e-f893-4d52-a5a7-3ce18399c33e";
+    "/boot"    = disk "vfat"  "75D3-A8FD";
+    "/nix"     = disk "btrfs" "981e3321-ebd4-40c5-ab67-171d65775310";
+    "/persist" = disk "ext4"  "ab2a2b3d-e657-4b26-aeea-54ab73d605cf";
+    "/home"    = disk "ext4"  "4f615243-d97e-4ca3-8332-1a0fe3cf7f70";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/89ccf3d5-c129-4345-a5a5-5b3cacccce09"; } ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/2373c16e-d942-413b-8b39-33bad96a2a8d"; } ];
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
