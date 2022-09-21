@@ -2,9 +2,7 @@
 
 {
 
-  # profile.desktop.enable = true;
   profile.workstation.enable = true;
-  profile.gaming.enable = true;
 
   services.fwupd.enable = true;
 
