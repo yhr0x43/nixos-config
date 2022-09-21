@@ -11,10 +11,6 @@
     "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
   ];
 
-  # FIXME: supposedly wifi do not work properly for linux version below 5.16?
-  # FIXME: black screen on boot when on kernel 5.18
-  boot.kernelPackages = pkgs.linuxPackages;
-
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
   in {
     "/"        = disk "btrfs" "5c4ce66e-f893-4d52-a5a7-3ce18399c33e";
