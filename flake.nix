@@ -133,7 +133,7 @@
     nixosConfigurations.frame = nixpkgs.lib.nixosSystem{
       inherit system;
       modules = [
-        nixos-hardware.nixosModules.framework
+        nixos-hardware.nixosModules.framework-12th-gen-intel
 
         ./boxes/frame.nix
       ] ++ common-modules;

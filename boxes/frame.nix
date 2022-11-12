@@ -13,14 +13,26 @@
 
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
   in {
-    "/"        = disk "btrfs" "5c4ce66e-f893-4d52-a5a7-3ce18399c33e";
-    "/boot"    = disk "vfat"  "75D3-A8FD";
-    "/nix"     = disk "btrfs" "981e3321-ebd4-40c5-ab67-171d65775310";
-    "/persist" = disk "ext4"  "ab2a2b3d-e657-4b26-aeea-54ab73d605cf";
-    "/home"    = disk "ext4"  "4f615243-d97e-4ca3-8332-1a0fe3cf7f70";
+    "/"        = disk "ext4" "e3d6307b-664b-41fe-b3a3-4285564593be";
+    "/tmp"     = { device = "none"; fsType = "tmpfs"; options = [ "defaults" "size=2G" "mode=777" ]; };
+    "/boot"    = disk "vfat"  "C4D9-C179";
+    "/nix"     = disk "btrfs" "48577937-aaf6-46ce-9533-03a18be0b9b8";
+    "/persist" = disk "ext4"  "7bae81c9-e3e8-4c32-98fe-3275c4db62c3";
+    "/home"    = disk "ext4"  "28dfb628-04b9-4d88-bb51-ec390b9aa5a1";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/2373c16e-d942-413b-8b39-33bad96a2a8d"; } ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/c67c616f-c10e-4f09-ab43-b8c65586a695"; } ];
+
+  # Suspend-then-hibernate everywhere
+  services.logind = {
+    lidSwitch = "suspend-then-hibernate";
+    extraConfig = ''
+      HandlePowerKey=suspend-then-hibernate
+      IdleAction=suspend-then-hibernate
+      IdleActionSec=5m
+    '';
+  };
+  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];

@@ -36,20 +36,20 @@ in {
           "7RHVCK4-ZPK6ITD-HES2N4M-LKW3NBV-S4T5257-Z3SWJPJ-F47VKCO-WHQWCAN")
         // (device "cybermega"
           "P6ZS6XU-AUHWG7S-BJTFDEO-ABPDFLA-YBWB2T2-XV52M7D-NVZAYAE-IWFT3QJ")
-        // (device "nut"
-          "QWAOM3H-TQ75QDG-QCXH4O5-5MUV7XX-TYLU5NI-W443RHC-K6YU3QD-72V52AD")
+        // (device "frame"
+          "GUUZEKH-NI3B4QI-7GTMJ4L-FUGDEDF-TWGGKND-7PT6DWY-ZOXTVTA-4WDIXQV")
         ;
 
         folders = {
           dox = {
             enable = mkDefault false;
             id = "rfkc3-ae2wq";
-            devices = [ "k26" "tpx1c" "cybermega" ];
+            devices = [ "k26" "tpx1c" "cybermega" "frame" ];
           };
           pass = {
             enable = mkDefault false;
             id = "nmdgd-nr5ik";
-            devices = [ "k26" "tpx1c" "cybermega" "nut" ];
+            devices = [ "k26" "tpx1c" "cybermega" "frame" ];
           };
         };
       };
