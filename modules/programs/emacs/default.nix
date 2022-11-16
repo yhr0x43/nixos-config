@@ -20,12 +20,18 @@ in {
         #     they're being parsed in nix, which lacks unicode
         #     support.
         # config = ./emacs.org;
-        config = ./init.el;
+        config = ./emacs.el;
+
+        defaultInitFile = true;
 
         package = pkgs.emacsUnstable;
 
         extraEmacsPackages = epkgs: with epkgs.melpaPackages; [
           evil
+          slime
+          paredit
+          rainbow-delimiters
+          ligature
           magit
           nix-mode
           use-package

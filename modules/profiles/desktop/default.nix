@@ -49,7 +49,7 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
 
-    # programs.custom.emacs.enable = true;
+    programs.custom.emacs.enable = true;
 
     programs.light.enable= true;
 
