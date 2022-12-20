@@ -17,7 +17,7 @@
   home.username = "yhrc";
   home.homeDirectory = "/home/yhrc";
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "22.11";
 
   services.syncthing.enable = true;
 
@@ -88,7 +88,7 @@
     # Office
     libreoffice-fresh
 
-    python38Packages.xdot
+    # python38Packages.xdot
 
     (aspellWithDicts (d: [ d.en d.en-computers ]))
 

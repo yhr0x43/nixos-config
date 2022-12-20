@@ -156,7 +156,7 @@ in {
       gutenprintBin
     ];
 
-    nix.trustedUsers = [ config.system.custom.mainUser.userName ];
+    nix.settings.trusted-users = [ config.system.custom.mainUser.userName ];
 
     home-manager.useUserPackages = true;
     home-manager.useGlobalPkgs = true;
