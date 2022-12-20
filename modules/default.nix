@@ -25,6 +25,7 @@
     ./system/syncthing.nix
     ./system/udev.nix
     ./system/x11
+    ./system/x11/stumpwm-wrapper.nix
 
     ./virtualisation/vfio.nix
     ./virtualisation/libvirt.nix

@@ -5,6 +5,7 @@ with lib;
 let
 
   cfg = config.system.custom.x11;
+  stumpwm-wrapper = (pkgs.callPackage ./stumpwm-wrapper.nix { });
 
 in {
 
@@ -27,6 +28,9 @@ in {
         lightdm.enable = true;
         #sddm.enable = true;
       };
+
+      # windowManager.stumpwm.enable = true;
+      # windowManager.stumpwm-wrapper.enable = true;
 
       windowManager.bspwm = {
         enable = true;
