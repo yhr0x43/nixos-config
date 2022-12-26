@@ -86,8 +86,9 @@ in {
       };
 
       systemd.tmpfiles.rules = [
+        #FIXME bluetoothd now complains not a directory with symlink, not saving paring before found a fix
         # Remember Bluetooth pairings
-        "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth"
+        #"L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth"
         # Remember lectured sudo users
         "L /var/db/sudo/lectured - - - - /persist/var/db/sudo/lectured"
       ];
