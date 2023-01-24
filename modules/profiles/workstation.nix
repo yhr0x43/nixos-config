@@ -26,6 +26,10 @@ in {
     #xdg.portal.extraPortals =
     #  [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
 
+    virtualisation.lxd.enable = true;
+    virtualisation.lxc.lxcfs.enable = true;
+    system.custom.mainUser.extraGroups = [ "lxd" ];
+
     hardware.opengl.driSupport32Bit = true;
     hardware.pulseaudio.support32Bit = true;
     hardware.bluetooth.package = pkgs.bluezFull;
