@@ -26,12 +26,14 @@ in {
 
         package = pkgs.emacsUnstable;
 
+        alwaysEnsure = true;
+
         extraEmacsPackages = epkgs: with epkgs.melpaPackages; [
-          evil
           slime
           paredit
           rainbow-delimiters
           ligature
+          lsp-mode
           magit
           nix-mode
           use-package
