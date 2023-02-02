@@ -16,7 +16,7 @@
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
   in {
     "/"        = disk "ext4" "e3d6307b-664b-41fe-b3a3-4285564593be";
-    "/tmp"     = { device = "none"; fsType = "tmpfs"; options = [ "defaults" "size=2G" "mode=777" ]; };
+    "/tmp"     = { device = "none"; fsType = "tmpfs"; options = [ "defaults" "size=10G" "mode=777" ]; };
     "/boot"    = disk "vfat"  "C4D9-C179";
     "/nix"     = disk "btrfs" "48577937-aaf6-46ce-9533-03a18be0b9b8";
     "/persist" = disk "ext4"  "7bae81c9-e3e8-4c32-98fe-3275c4db62c3";
