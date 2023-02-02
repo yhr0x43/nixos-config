@@ -52,6 +52,8 @@ in {
       };
     };
 
+    services.touchegg.enable = true;
+
     environment.systemPackages = with pkgs; [
       flameshot
 
