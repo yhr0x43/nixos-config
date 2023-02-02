@@ -49,9 +49,9 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
 
-    programs.custom.emacs.enable = true;
+    programs.custom.emacs.enable = false;
 
-    programs.light.enable= true;
+    programs.light.enable = true;
 
     time.timeZone = "America/Chicago";
 
@@ -69,17 +69,20 @@ in {
         LESS = "-FXR";
         # colored man output
         # from http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
-        LESS_TERMCAP_mb = "[01;31m";			# begin blinking
-        LESS_TERMCAP_md = "[01;38;5;74m";		# begin bold
-        LESS_TERMCAP_me = "[0m";				# end mode
-        LESS_TERMCAP_se = "[0m";				# end standout-mode
-        LESS_TERMCAP_so = "[38;5;246m";		# begin standout-mode - info box
-        LESS_TERMCAP_ue = "[0m";				# end underline
-        LESS_TERMCAP_us = "[04;38;5;146m";	# begin underline
+        LESS_TERMCAP_mb = "[01;31m"; # begin blinking
+        LESS_TERMCAP_md = "[01;38;5;74m"; # begin bold
+        LESS_TERMCAP_me = "[0m"; # end mode
+        LESS_TERMCAP_se = "[0m"; # end standout-mode
+        LESS_TERMCAP_so = "[38;5;246m"; # begin standout-mode - info box
+        LESS_TERMCAP_ue = "[0m"; # end underline
+        LESS_TERMCAP_us = "[04;38;5;146m"; # begin underline
       };
     };
 
     environment.systemPackages = with pkgs; [
+      acpi
+
+      nixfmt
       silver-searcher
 
       man-pages
@@ -91,9 +94,11 @@ in {
       pavucontrol
       xclip
 
+      texlive.combined.scheme-full
+
       # NONFREE
-      zoom-us
-      teams
+      # zoom-us
+      # teams
     ];
 
     documentation.dev.enable = true;
@@ -151,10 +156,7 @@ in {
     hardware.sane.enable = true;
     #Enable CUPS to print documents.
     services.printing.enable = true;
-    services.printing.drivers = with pkgs; [
-      gutenprint
-      gutenprintBin
-    ];
+    services.printing.drivers = with pkgs; [ gutenprint gutenprintBin ];
 
     nix.settings.trusted-users = [ config.system.custom.mainUser.userName ];
 

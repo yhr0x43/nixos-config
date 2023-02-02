@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   colors = {
@@ -74,9 +74,9 @@ in
     settings = {
       inherit colors;
       "bar/default" = {
-        modules-left = "bspwm xwindow";
-        modules-center = "date yubikey";
-        modules-right = "battery filesystem";
+        modules-left = lib.mkDefault "bspwm xwindow";
+        modules-center = lib.mkDefault "date yubikey";
+        modules-right = lib.mkDefault "battery filesystem";
       } // bar-common ;
       "module/bspwm" = {
         type = "internal/bspwm";
