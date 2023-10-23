@@ -16,8 +16,10 @@ in {
 
     services.openssh = {
       enable = true;
-      settings.X11Forwarding = true;
-      passwordAuthentication = false;
+      settings = {
+        X11Forwarding = true;
+        PasswordAuthentication = false;
+      };
     };
 
     #services.flatpak.enable = true;

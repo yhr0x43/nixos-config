@@ -109,7 +109,7 @@ in {
       '';
     };
 
-    qt5.platformTheme = "qt5ct";
+    qt.platformTheme = "qt5ct";
 
     environment.systemPackages = with pkgs; [
       gtk-engine-murrine
