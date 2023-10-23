@@ -6,6 +6,7 @@
   imports = [
     ./home/alacritty.nix
     ./home/autorandr.nix
+    ./home/emacs.nix
     ./home/dunst.nix
     ./home/polybar.nix
     ./home/rime.nix
