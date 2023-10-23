@@ -15,15 +15,16 @@
 
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };
   in {
-    "/"        = disk "ext4" "e3d6307b-664b-41fe-b3a3-4285564593be";
-    "/tmp"     = { device = "none"; fsType = "tmpfs"; options = [ "defaults" "size=10G" "mode=777" ]; };
-    "/boot"    = disk "vfat"  "C4D9-C179";
-    "/nix"     = disk "btrfs" "48577937-aaf6-46ce-9533-03a18be0b9b8";
-    "/persist" = disk "ext4"  "7bae81c9-e3e8-4c32-98fe-3275c4db62c3";
-    "/home"    = disk "ext4"  "28dfb628-04b9-4d88-bb51-ec390b9aa5a1";
+    "/"         = disk "btrfs" "39b522ab-bd28-4cea-8c0b-e4f389348012";
+    "/tmp"      = { device = "none"; fsType = "tmpfs"; options = [ "defaults" "size=10G" "mode=777" ]; };
+    "/boot/efi" = disk "vfat"  "8162-2814";
+    "/boot"     = disk "ext4"  "b4e11135-9e7d-41ae-a21f-4a7f24a8c247";
+    "/nix"      = disk "btrfs" "6ea8084e-781e-4002-aa06-61f9a0cc572e";
+    "/persist"  = disk "ext4"  "4e404564-e24d-43f5-aeb8-a563e8f60320";
+    "/home"     = disk "ext4"  "a59c80cd-414f-4a81-873d-b1a8aa6fa384";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-uuid/c67c616f-c10e-4f09-ab43-b8c65586a695"; } ];
+  swapDevices = [ { device = "/dev/disk/by-uuid/f008b362-b5e1-4a79-bb85-f08de3e65c7b"; } ];
 
   # Suspend-then-hibernate everywhere
   services.logind = {
@@ -34,25 +35,31 @@
       IdleActionSec=5m
     '';
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
+  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
     loader = {
       efi.canTouchEfiVariables = true;
+      efi.efiSysMountPoint = "/boot/efi";
       grub = {
         enable = true;
         efiSupport = true;
+        default = "saved";
         device = "nodev";
+        useOSProber = true;
       };
     };
   };
+
+  # dual boot compatibility with Windows
+  time.hardwareClockInLocalTime = true;
 
   networking.networkmanager.enable = true;
   networking.interfaces.wlp166s0.useDHCP = true;
 
   networking.hostName = "frame";
-  networking.hostId = "007f0200";
+  networking.hostId = "b199ed4f";
 
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
