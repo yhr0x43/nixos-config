@@ -18,7 +18,6 @@ in {
       #TODO: switch to fcitx5
       inputMethod = {
         enabled = "fcitx5";
-        fcitx.engines = with pkgs.fcitx-engines; [ mozc rime ];
         fcitx5.addons = with pkgs; [ fcitx5-mozc fcitx5-rime ];
       };
     };

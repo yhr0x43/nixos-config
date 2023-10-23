@@ -3,27 +3,26 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-22.11";
+      url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nur.url = "github:nix-community/NUR";
 
-    emacs-overlay.url =
-      "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+    # emacs-overlay.url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware
-    , home-manager, nur, emacs-overlay, nix-doom-emacs, ... }:
+    , home-manager, nur, ... }:
     let
 
       system = "x86_64-linux";
@@ -37,9 +36,6 @@
       };
 
       extra-pkgs = self: super: {
-        doom-emacs = nix-doom-emacs.packages.${system}.default.override {
-          doomPrivateDir = ./doom.d;
-        };
       };
 
       common-modules = [
@@ -51,11 +47,11 @@
 
         {
           nixpkgs.overlays =
-            [ overlay-unstable extra-pkgs nur.overlay emacs-overlay.overlay ];
+            [ overlay-unstable extra-pkgs nur.overlay ];
         }
 
         ({ lib, pkgs, nix, ... }: {
-          system.stateVersion = "22.11";
+          system.stateVersion = "23.05";
 
           # Enable using the same nixpkgs commit in the imperative tools
           nix.registry = {
@@ -109,15 +105,6 @@
         inherit system;
         modules = [
           nixos-hardware.nixosModules.framework-12th-gen-intel
-          {
-            #FIXME probably should not use nix-doom-emacs like this
-            environment.systemPackages = let
-              doom-emacs = nix-doom-emacs.packages.${system}.default.override {
-                doomPrivateDir = ./doom.d;
-              };
-            in [ doom-emacs ];
-          }
-
           ./boxes/frame.nix
         ] ++ common-modules;
       };

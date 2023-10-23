@@ -54,6 +54,8 @@ in {
 
   config = mkIf cfg.enable {
 
+    #FIXME shell should not be specified here
+    programs.zsh.enable = true;
     users = {
 
       mutableUsers = true;
