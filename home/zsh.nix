@@ -13,6 +13,9 @@
     '';
     oh-my-zsh = {
       enable = true;
+      extraConfig = "
+        CASE_SENSITIVE=true
+      ";
       plugins = [ "direnv" "pass" ];
       theme = "rgm";
     };
