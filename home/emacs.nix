@@ -12,7 +12,9 @@ with lib;
         auctex
         default-text-scale
         magit
+        nix-mode
         paredit
+        rainbow-delimiters
       ];
   };
 }
