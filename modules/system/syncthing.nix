@@ -37,7 +37,7 @@ in {
         // (device "cybermega"
           "P6ZS6XU-AUHWG7S-BJTFDEO-ABPDFLA-YBWB2T2-XV52M7D-NVZAYAE-IWFT3QJ")
         // (device "frame"
-          "GUUZEKH-NI3B4QI-7GTMJ4L-FUGDEDF-TWGGKND-7PT6DWY-ZOXTVTA-4WDIXQV")
+          "PBCMGCQ-C5K5S7F-HERVNJU-UG2M4EV-TCHOADU-3YFNCBB-F275BDY-JE5A6QP")
         ;
 
         folders = {
