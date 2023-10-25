@@ -36,7 +36,7 @@
 (global-set-key (kbd "C-,") 'rc/duplicate-line)
 
 (defun rc/display-fill-column ()
-  (display-fll-column-indicator-mode t))
+  (display-fill-column-indicator-mode t))
 (add-hook 'c-mode-hook 'rc/display-fill-column)
 
 ;; load this after everything else per recommendation by the author
