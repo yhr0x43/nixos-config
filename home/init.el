@@ -16,14 +16,20 @@
       kept-old-versions 2
       version-control t)
 
-(when (require 'default-text-scale nil 'noerror)
-  (default-text-scale-mode))
+(defmacro rc/soft-require (package &rest action)
+  (append `(when (require ,package nil 'noerror)) action))
 
-(when (require 'nix-mode nil 'noerror)
-  (add-hook 'auto-mode-alist '("\\.nix\\'" . nix-mode)))
+(rc/soft-require
+ 'default-text-scale
+ (default-text-scale-mode nil))
 
-(when (require 'rainbow-delimiters nil 'noerror)
-  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
+(rc/soft-require
+ 'nix-mode
+ (add-hook 'auto-mode-alist '("\\.nix\\'" . nix-mode)))
+
+(rc/soft-require
+ 'rainbow-delimiters
+ (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
 (defun rc/duplicate-line()
   (interactive)
