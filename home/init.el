@@ -16,22 +16,14 @@
       kept-old-versions 2
       version-control t)
 
-(defmacro rc/soft-require (package &rest action)
-  (append `(when (require ,package nil 'noerror)) action))
+(with-eval-after-load 'default-text-scale
+  (default-text-scale-mode nil))
 
-(rc/soft-require
- 'default-text-scale
- (default-text-scale-mode nil))
-
-(rc/soft-require
- 'nix-mode
- (add-hook 'auto-mode-alist '("\\.nix\\'" . nix-mode)))
-
-(rc/soft-require
- 'rainbow-delimiters
- (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
-
-(rc/soft-require 'envrc)
+(with-eval-after-load 'nix-mode
+  (add-hook 'auto-mode-alist '("\\.nix\\'" . nix-mode)))
+  
+(with-eval-after-load 'rainbow-delimiters
+  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
 (defun rc/duplicate-line()
   (interactive)
@@ -46,6 +38,11 @@
 (defun rc/display-fill-column ()
   (display-fll-column-indicator-mode t))
 (add-hook 'c-mode-hook 'rc/display-fill-column)
+
+;; load this after everything else per recommendation by the author
+;; https://github.com/purcell/envrc#usage
+(with-eval-after-load 'envrc
+  (envrc-global-mode))
 
 (custom-set-variables
  '(custom-enabled-themes '(tango-dark))
