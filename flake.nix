@@ -16,13 +16,11 @@
 
     nur.url = "github:nix-community/NUR";
 
-    # emacs-overlay.url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
+    emacs-overlay.url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
 
-    # nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware
-    , home-manager, nur, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, ... }:
     let
 
       system = "x86_64-linux";
@@ -47,7 +45,7 @@
 
         {
           nixpkgs.overlays =
-            [ overlay-unstable extra-pkgs nur.overlay ];
+            [ overlay-unstable extra-pkgs nur.overlay (import self.inputs.emacs-overlay) ];
         }
 
         ({ lib, pkgs, nix, ... }: {

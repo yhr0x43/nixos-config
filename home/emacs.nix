@@ -11,6 +11,7 @@ with lib;
         ag
         auctex
         default-text-scale
+        melpaPackages.envrc
         magit
         nix-mode
         paredit

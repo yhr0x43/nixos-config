@@ -31,6 +31,8 @@
  'rainbow-delimiters
  (add-hook 'emacs-lisp-mode-hook #'rainbow-delimiters-mode))
 
+(rc/soft-require 'envrc)
+
 (defun rc/duplicate-line()
   (interactive)
   (move-beginning-of-line 1)
