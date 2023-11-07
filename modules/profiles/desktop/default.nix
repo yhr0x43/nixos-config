@@ -87,12 +87,25 @@ in {
 
       python3 # for passFF
       pavucontrol
+      
+      # River
       river
+      alacritty
+      wayland
+      swaylock
+      swayidle
+      wl-clipboard
+      xdg-utils # for openning default programms when clicking links
+      glib # gsettings
+      bemenu # wayland clone of dmenu
+      mako # notification daemon
 
       # NONFREE
       # zoom-us
       # teams
     ];
+
+    services.xserver.displayManager.sessionPackages = [ pkgs.river ];
 
     documentation.dev.enable = true;
 
