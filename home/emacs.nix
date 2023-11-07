@@ -13,6 +13,7 @@ with lib;
         ag
         auctex
         default-text-scale
+        json-mode
         melpaPackages.envrc
         magit
         nix-mode
