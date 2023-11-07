@@ -49,8 +49,6 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
     };
 
-    programs.custom.emacs.enable = false;
-
     programs.light.enable = true;
 
     time.timeZone = "America/Chicago";
