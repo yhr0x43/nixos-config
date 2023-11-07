@@ -11,7 +11,6 @@
     ./profiles/workstation.nix
     ./profiles/gaming.nix
 
-    ./programs/emacs
     ./programs/sway.nix
 
     ./networking/wireguard.nix
