@@ -11,6 +11,7 @@
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
   systemd.tmpfiles.rules = [
     "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
+    "L /var/lib/fprint - - - - /persist/var/lib/fprint"
   ];
 
   fileSystems = let disk = fsType: uuid: { inherit fsType; device = "/dev/disk/by-uuid/${uuid}"; };

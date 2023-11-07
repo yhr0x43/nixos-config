@@ -79,10 +79,8 @@ in {
       environment.etc = {
         # Remember NixOS configuration
         "nixos".source = "/persist/etc/nixos/";
-
         # Remember user credentials
         "shadow".source = "/persist/etc/shadow";
-        "shadow-".source = "/persist/etc/shadow-";
       };
 
       systemd.tmpfiles.rules = [
