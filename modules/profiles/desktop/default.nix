@@ -46,7 +46,7 @@ in {
       enable = true;
       userName = "yhrc";
       #TODO: manage wireshark in system.custom.mainUser
-      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" ];
+      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" "input" ];
     };
 
     programs.light.enable = true;
