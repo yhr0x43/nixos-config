@@ -4,8 +4,6 @@
 
   profile.workstation.enable = true;
 
-  programs.custom.sway.enable = true;
-
   services.fwupd.enable = true;
 
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
