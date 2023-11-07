@@ -16,6 +16,12 @@
       kept-old-versions 2
       version-control t)
 
+;;; c-mode
+(setq-default c-basic-offset 4
+	      c-default-style '((java-mode . "java")
+				(awk-mode . "awk")
+				(other . "bsd")))
+
 (with-eval-after-load 'default-text-scale
   (default-text-scale-mode nil))
 
