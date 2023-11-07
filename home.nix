@@ -74,15 +74,17 @@
 
     # Misc. Unix-ish tools
     fzf
-    psensor
+    lm_sensors
     ncdu
+    nixfmt
+    silver-searcher
     zeal
 
-    # Note-taking
+    # Media
     xournalpp
     simple-scan
-
-    # Media
+    texlive.combined.scheme-full
+    
     mpv
     feh
 

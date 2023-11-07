@@ -80,9 +80,6 @@ in {
     environment.systemPackages = with pkgs; [
       acpi
 
-      nixfmt
-      silver-searcher
-
       man-pages
       man-pages-posix
 
@@ -90,9 +87,6 @@ in {
 
       python3 # for passFF
       pavucontrol
-      xclip
-
-      texlive.combined.scheme-full
 
       # NONFREE
       # zoom-us
@@ -148,7 +142,6 @@ in {
       upower.enable = true;
       dbus.enable = true;
       autorandr.enable = true;
-      lorri.enable = true;
     };
 
     hardware.sane.enable = true;
