@@ -87,6 +87,7 @@ in {
 
       python3 # for passFF
       pavucontrol
+      river
 
       # NONFREE
       # zoom-us
