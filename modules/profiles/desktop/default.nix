@@ -39,6 +39,8 @@ in {
       ATmega32U4 = true;
     };
 
+    services.udev.packages = [ pkgs.dsview ];
+
     system.custom.x11.enable = true;
     system.custom.i18n.enable = true;
 
@@ -87,6 +89,8 @@ in {
 
       python3 # for passFF
       pavucontrol
+
+      dsview
       
       # River
       river
