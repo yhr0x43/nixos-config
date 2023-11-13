@@ -8,6 +8,8 @@
 
 (set-face-attribute 'default nil :height 150)
 
+(setq inhibit-startup-screen t)
+
 ;; backup file
 (setq backup-by-copying t
       backup-directory-alist `(("." . "~/.local/share/emacs/backup"))
