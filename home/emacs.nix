@@ -6,7 +6,7 @@ with lib;
   programs.emacs = {
     enable = true;
     # FIXME magit depends on seq-keep, which is only available after 29.1
-    package = pkgs.emacs29;
+    package = pkgs.emacs29-pgtk;
     extraConfig = builtins.readFile ./init.el;
     extraPackages =
       epkgs: with epkgs; [

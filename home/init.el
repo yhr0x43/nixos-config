@@ -6,6 +6,11 @@
 (scroll-bar-mode 1)
 (column-number-mode 1)
 
+;; transparency
+(set-frame-parameter nil 'alpha-background 70)
+(add-to-list 'default-frame-alist '(alpha-background . 70))
+
+
 (set-face-attribute 'default nil :height 150)
 
 (setq inhibit-startup-screen t)
