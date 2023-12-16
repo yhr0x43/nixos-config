@@ -43,6 +43,8 @@ in {
       libnotify
       gimp-with-plugins
 
+      vscodium
+
       hackrf
 
       mono4

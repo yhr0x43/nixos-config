@@ -96,6 +96,8 @@ in {
       river
       alacritty
       wayland
+      waybar
+      swaybg
       swaylock
       swayidle
       wl-clipboard
