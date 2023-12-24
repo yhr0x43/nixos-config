@@ -105,6 +105,8 @@ in {
       glib # gsettings
       bemenu # wayland clone of dmenu
       mako # notification daemon
+      pamixer
+      playerctl
 
       # NONFREE
       # zoom-us
