@@ -63,7 +63,5 @@
   # Needed so that nixos-hardware enables CPU microcode updates
   hardware.enableRedistributableFirmware = true;
 
-  services.shadowsocks.enable = true;
-
   services.tailscale.enable = true;
 }
