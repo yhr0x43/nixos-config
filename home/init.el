@@ -52,6 +52,9 @@
   (display-fill-column-indicator-mode t))
 (add-hook 'c-mode-hook 'rc/display-fill-column)
 
+;; TeX view program
+(add-to-list 'TeX-view-program-selection '(output-pdf "Zathura"))
+
 ;; load this after everything else per recommendation by the author
 ;; https://github.com/purcell/envrc#usage
 (with-eval-after-load 'envrc
