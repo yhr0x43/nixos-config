@@ -52,6 +52,8 @@
   (display-fill-column-indicator-mode t))
 (add-hook 'c-mode-hook 'rc/display-fill-column)
 
+(require 'fasm-mode)
+
 ;; TeX view program
 (add-to-list 'TeX-view-program-selection '(output-pdf "Zathura"))
 
