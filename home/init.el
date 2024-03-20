@@ -55,7 +55,8 @@
 (require 'fasm-mode)
 
 ;; TeX view program
-(add-to-list 'TeX-view-program-selection '(output-pdf "Zathura"))
+(with-eval-after-load 'TeX-mode
+  (add-to-list 'TeX-view-program-selection '(output-pdf "Zathura")))
 
 ;; load this after everything else per recommendation by the author
 ;; https://github.com/purcell/envrc#usage
