@@ -3,16 +3,11 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     nur.url = "github:nix-community/NUR";
 
@@ -20,7 +15,7 @@
 
   };
 
-  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, home-manager, nur, ... }:
+  outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, nur, ... }:
     let
 
       system = "x86_64-linux";
@@ -41,15 +36,13 @@
 
         ./cachix.nix
 
-        home-manager.nixosModules.home-manager
-
         {
           nixpkgs.overlays =
             [ overlay-unstable extra-pkgs nur.overlay (import self.inputs.emacs-overlay) ];
         }
 
         ({ lib, pkgs, nix, ... }: {
-          system.stateVersion = "23.05";
+          system.stateVersion = "23.11";
 
           # Enable using the same nixpkgs commit in the imperative tools
           nix.registry = {
@@ -104,6 +97,17 @@
         modules = [
           nixos-hardware.nixosModules.framework-12th-gen-intel
           ./boxes/frame.nix
+        ] ++ common-modules;
+      };
+
+      nixosConfigurations.mechrev = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = with nixos-hardware.nixosModules; [
+          common-pc-laptop-ssd
+          common-pc-laptop
+	  common-cpu-amd
+	  common-gpu-amd
+          ./boxes/mechrev.nix
         ] ++ common-modules;
       };
     };

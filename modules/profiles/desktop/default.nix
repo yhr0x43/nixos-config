@@ -1,4 +1,4 @@
-{ config, home-manager, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 
@@ -20,7 +20,7 @@ in {
     };
 
     services.syncthing = {
-      folders = {
+      settings.folders = {
         dox = {
           enable = true;
           path = "/home/yhrc/dox";
@@ -172,10 +172,6 @@ in {
     services.printing.drivers = with pkgs; [ gutenprint gutenprintBin ];
 
     nix.settings.trusted-users = [ config.system.custom.mainUser.userName ];
-
-    home-manager.useUserPackages = true;
-    home-manager.useGlobalPkgs = true;
-    home-manager.users.mainUser = import ../../../home.nix;
 
     networking.firewall.enable = false;
   };

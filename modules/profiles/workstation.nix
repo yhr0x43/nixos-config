@@ -34,7 +34,8 @@ in {
 
     hardware.opengl.driSupport32Bit = true;
     hardware.pulseaudio.support32Bit = true;
-    hardware.bluetooth.package = pkgs.bluezFull;
+    # FIXME is specifing package stil necessary?
+    hardware.bluetooth.package = pkgs.bluez;
 
     environment.systemPackages = with pkgs; [
       openconnect

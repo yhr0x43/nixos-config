@@ -14,7 +14,7 @@ in {
   config = mkIf cfg.enable {
     fonts = {
       fontDir.enable = true;
-      enableDefaultFonts = true;
+      enableDefaultPackages = true;
       enableGhostscriptFonts = true;
 
       fontconfig = {
@@ -35,7 +35,7 @@ in {
         };
       };
 
-      fonts = with pkgs; [
+      packages = with pkgs; [
         corefonts
         hasklig
         inconsolata

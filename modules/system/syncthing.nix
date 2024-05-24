@@ -21,7 +21,7 @@ in {
         key = toString ../../secrets/syncthing/key.pem;
 
         overrideDevices = true;
-        devices = let
+        settings.devices = let
           device = name: id: {
             "${name}" = {
               name = name;
@@ -44,7 +44,7 @@ in {
           "6QN2KGI-7BQRMML-PR4CDUX-N252KGI-LWTF3SA-HDN6NFD-DF6WAP4-WNFJLQ3")
         ;
 
-        folders = {
+        settings.folders = {
           dox = {
             enable = mkDefault false;
             id = "rfkc3-ae2wq";
