@@ -10,6 +10,8 @@
     htop
     killall
     lsof
+    screen
+    ed
 
     wget curl
 
