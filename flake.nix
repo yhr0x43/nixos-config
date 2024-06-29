@@ -105,8 +105,10 @@
         modules = with nixos-hardware.nixosModules; [
           common-pc-laptop-ssd
           common-pc-laptop
-	  common-cpu-amd
-	  common-gpu-amd
+          common-cpu-amd
+          common-cpu-amd-raphael-igpu
+          common-cpu-amd-pstate
+          common-gpu-amd
           ./boxes/mechrev.nix
         ] ++ common-modules;
       };

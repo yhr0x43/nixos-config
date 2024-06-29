@@ -4,8 +4,6 @@
 
   profile.workstation.enable = true;
 
-  services.fwupd.enable = true;
-
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
   systemd.tmpfiles.rules = [
     "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
@@ -34,7 +32,7 @@
       IdleActionSec=5m
     '';
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+  systemd.sleep.extraConfig = "HibernateDelaySec=10m";
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];
@@ -55,7 +53,6 @@
   time.hardwareClockInLocalTime = true;
 
   networking.networkmanager.enable = true;
-  networking.interfaces.wlp1s0.useDHCP = true;
 
   networking.hostName = "mechrev";
   networking.hostId = "ea1618aa";
