@@ -90,10 +90,8 @@ in {
       python3 # for passFF
       pavucontrol
 
-      dsview
-      
-      # River
-      river
+      # Sway
+      sway
       alacritty
       wayland
       waybar
