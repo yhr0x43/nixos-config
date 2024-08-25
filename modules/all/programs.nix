@@ -5,6 +5,7 @@
     # Archive
     unar zip unzip
 
+    # Unix Tools
     binutils
     file
     htop
@@ -12,8 +13,10 @@
     lsof
     screen
     ed
+    bc
 
-    wget curl
+    wget
+    curl
 
     # Nix-specific tools
     #appimage-run
