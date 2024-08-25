@@ -111,7 +111,7 @@ in {
       # teams
     ];
 
-    services.xserver.displayManager.sessionPackages = [ pkgs.river ];
+    services.displayManager.sessionPackages = [ pkgs.river ];
 
     documentation.dev.enable = true;
 
@@ -150,7 +150,7 @@ in {
     programs.gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "qt";
+      pinentryPackage = pkgs.pinentry-qt;
     };
 
     services = {

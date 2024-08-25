@@ -19,12 +19,17 @@ in {
   };
 
   config = mkIf cfg.enable {
+    services.displayManager = {
+      autoLogin = {
+        enable = false;
+        user = cfg.autoLoginUser;
+      };
+      defaultSession = "none+bspwm";
+    };
     services.xserver = {
       enable = true;
 
       displayManager = {
-        autoLogin.enable = false;
-        autoLogin.user = cfg.autoLoginUser;
         lightdm.enable = true;
         #sddm.enable = true;
       };
@@ -37,18 +42,15 @@ in {
         configFile = ../../../assets/bspwmrc;
         sxhkd.configFile = import ./sxhkdrc.nix { inherit pkgs; };
       };
-      displayManager.defaultSession = "none+bspwm";
+    };
 
-      # mouse/touchpad
-      # --------------
-      libinput = {
-        enable = true;
-        touchpad = {
-          disableWhileTyping = true;
-          tapping = true;
-          scrollMethod = "twofinger";
-          accelSpeed = "2";
-        };
+    services.libinput = {
+      enable = true;
+      touchpad = {
+        disableWhileTyping = true;
+        tapping = true;
+        scrollMethod = "twofinger";
+        accelSpeed = "2";
       };
     };
 

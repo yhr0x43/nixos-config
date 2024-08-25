@@ -3,7 +3,7 @@
 
   inputs = {
 
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -42,7 +42,7 @@
         }
 
         ({ lib, pkgs, nix, ... }: {
-          system.stateVersion = "23.11";
+          system.stateVersion = "24.05";
 
           # Enable using the same nixpkgs commit in the imperative tools
           nix.registry = {
