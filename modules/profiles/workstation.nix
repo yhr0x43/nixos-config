@@ -22,11 +22,11 @@ in {
       };
     };
 
-    #services.flatpak.enable = true;
-    #xdg.portal.enable = true;
-    #xdg.portal.gtkUsePortal = true;
-    #xdg.portal.extraPortals =
-    #  [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
+    # services.flatpak.enable = true;
+    # xdg.portal.enable = true;
+    # xdg.portal.gtkUsePortal = true;
+    # xdg.portal.extraPortals =
+    #   [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-wlr ];
 
     virtualisation.lxd.enable = true;
     virtualisation.lxc.lxcfs.enable = true;
@@ -34,8 +34,6 @@ in {
 
     hardware.opengl.driSupport32Bit = true;
     hardware.pulseaudio.support32Bit = true;
-    # FIXME is specifing package stil necessary?
-    hardware.bluetooth.package = pkgs.bluez;
 
     environment.systemPackages = with pkgs; [
       openconnect

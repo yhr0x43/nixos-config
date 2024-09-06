@@ -24,14 +24,13 @@ in {
         enable = false;
         user = cfg.autoLoginUser;
       };
-      defaultSession = "none+bspwm";
+      defaultSession = if config.programs.custom.sway.enable then "sway" else "none+bspwm";
     };
     services.xserver = {
       enable = true;
 
       displayManager = {
         lightdm.enable = true;
-        #sddm.enable = true;
       };
 
       # windowManager.stumpwm.enable = true;

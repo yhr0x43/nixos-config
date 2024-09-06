@@ -25,10 +25,6 @@ in {
           enable = true;
           path = "/home/yhrc/dox";
         };
-        pass = {
-          enable = true;
-          path = "/home/yhrc/.local/share/password-store";
-        };
       };
     };
 
@@ -37,12 +33,13 @@ in {
     system.custom.udev = {
       hackRF = true;
       ATmega32U4 = true;
+      dsLogic = true;
     };
-
-    services.udev.packages = [ pkgs.dsview ];
 
     system.custom.x11.enable = true;
     system.custom.i18n.enable = true;
+
+    programs.custom.sway.enable = true;
 
     system.custom.mainUser = {
       enable = true;
@@ -90,28 +87,14 @@ in {
       python3 # for passFF
       pavucontrol
 
-      # Sway
-      sway
-      alacritty
-      wayland
-      waybar
-      swaybg
-      swaylock
-      swayidle
-      wl-clipboard
-      xdg-utils # for openning default programms when clicking links
       glib # gsettings
-      bemenu # wayland clone of dmenu
-      mako # notification daemon
-      pamixer
-      playerctl
 
       # NONFREE
       # zoom-us
       # teams
     ];
 
-    services.displayManager.sessionPackages = [ pkgs.river ];
+    services.displayManager.sessionPackages = with pkgs; [ sway ];
 
     documentation.dev.enable = true;
 

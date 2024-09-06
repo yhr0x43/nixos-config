@@ -1,7 +1,6 @@
 { pkgs, lib, ... }:
 
 {
-
   profile.workstation.enable = true;
 
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
@@ -32,7 +31,7 @@
       IdleActionSec=5m
     '';
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=10m";
+  systemd.sleep.extraConfig = "HibernateDelaySec=5m";
 
   boot = {
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" ];

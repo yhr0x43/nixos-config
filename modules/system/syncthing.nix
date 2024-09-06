@@ -50,11 +50,6 @@ in {
             id = "rfkc3-ae2wq";
             devices = [ "k26" "tpx1c" "cybermega" "frame" ];
           };
-          pass = {
-            enable = mkDefault false;
-            id = "nmdgd-nr5ik";
-            devices = [ "k26" "tpx1c" "cybermega" "frame" ];
-          };
         };
       };
     })

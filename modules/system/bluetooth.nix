@@ -23,13 +23,11 @@ in {
     services.blueman.enable = true;
 
     environment.systemPackages = with pkgs; [
-
       # bluetooth audio
       # ---------------
       # todo : check if pulseaudio is enabled
       bluez
       bluez-tools
-
     ];
   };
 
