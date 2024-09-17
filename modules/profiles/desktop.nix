@@ -36,10 +36,17 @@ in {
       dsLogic = true;
     };
 
-    system.custom.x11.enable = true;
     system.custom.i18n.enable = true;
 
-    programs.custom.sway.enable = true;
+    services.pipewire = {
+      enable = true;
+      alsa.enable = true;
+      pulse.enable = true;
+    };
+    
+    environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
+
+    qt.platformTheme = "qt5ct";
 
     system.custom.mainUser = {
       enable = true;
@@ -47,7 +54,7 @@ in {
       #TODO: manage wireshark in system.custom.mainUser
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" "input" ];
     };
-
+    
     programs.light.enable = true;
 
     time.timeZone = "America/Chicago";
@@ -87,14 +94,23 @@ in {
       python3 # for passFF
       pavucontrol
 
-      glib # gsettings
+      calcurse
 
+      # gtk libraries
+      # FIXME: No schema installed
+      glib # gsettings
+      gtk-engine-murrine
+      gtk_engines
+      gsettings-desktop-schemas
+      lxappearance
+      lxmenu-data
+      shared-mime-info
+      
+      (hunspellWithDicts (with hunspellDicts; [ en-us ]))
       # NONFREE
       # zoom-us
       # teams
     ];
-
-    services.displayManager.sessionPackages = with pkgs; [ sway ];
 
     documentation.dev.enable = true;
 

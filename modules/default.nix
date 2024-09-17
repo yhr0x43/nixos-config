@@ -11,8 +11,6 @@
     ./profiles/workstation.nix
     ./profiles/gaming.nix
 
-    ./programs/sway.nix
-
     ./networking/wireguard.nix
 
     ./system/audio.nix

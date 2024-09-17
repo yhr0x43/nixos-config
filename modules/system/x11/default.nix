@@ -83,12 +83,12 @@ in {
       autorandr.enable = true;
     };
 
-    services.picom = {
-      enable = true;
-      backend = "xr_glx_hybrid";
-      fade = true;
-      vSync = true;
-    };
+    # services.picom = {
+    #   enable = true;
+    #   backend = "xr_glx_hybrid";
+    #   fade = true;
+    #   vSync = true;
+    # };
 
     # Xresources config
     # -----------------
