@@ -5,8 +5,6 @@
   imports = [
     ./all
 
-    ./hardware/amd.nix
-
     ./profiles/desktop.nix
     ./profiles/workstation.nix
     ./profiles/gaming.nix

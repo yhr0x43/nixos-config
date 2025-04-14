@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Archive
-    unar zip unzip
+    unar zip unzip p7zip
 
     # Unix Tools
     binutils
@@ -14,9 +14,14 @@
     screen
     ed
     bc
+    jq
 
     wget
     curl
+    acpi
+
+    man-pages
+    man-pages-posix
 
     # Nix-specific tools
     #appimage-run
@@ -25,6 +30,8 @@
     cachix
     #unstable.nix-tree
   ];
+  
+  documentation.dev.enable = true;
 
   programs.tmux = {
     enable = true;

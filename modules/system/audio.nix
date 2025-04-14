@@ -20,30 +20,11 @@ in {
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    
+    system.custom.mainUser.extraGroups = [ "audio" ];
 
-
-
-    # because of systemWide ensure main user is in audio group
-    #system.custom.mainUser.extraGroups = [ "audio" ];
-
-    #hardware.pulseaudio = {
-    #  enable = true;
-    #  package = pkgs.pulseaudioFull;
-
-    #  # all in audio group can do audio
-    #  # systemWide = true;
-
-    #  extraConfig = ''
-    #    # automatically switch to newly-connected devices
-    #    load-module module-switch-on-connect
-    #  '';
-    #};
-
-    #nixpkgs.config.pulseaudio = true;
-
-    # Packages needed
+    # Audio Management Tools
     # ---------------
-    #TODO: maybe tryout more interesting tools?
     environment.systemPackages = with pkgs; [
       pavucontrol
     ];

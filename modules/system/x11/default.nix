@@ -24,7 +24,8 @@ in {
         enable = false;
         user = cfg.autoLoginUser;
       };
-      defaultSession = if config.programs.custom.sway.enable then "sway" else "none+bspwm";
+      # defaultSession = if config.programs.custom.sway.enable then "sway" else "none+bspwm";
+      defaultSession = "none+bspwm";
     };
     services.xserver = {
       enable = true;

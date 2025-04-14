@@ -13,7 +13,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      unstable.polymc
+      prismlauncher
       minecraft
       flite              # For Minecraft TTS
       discord

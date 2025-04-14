@@ -38,7 +38,7 @@
 
         {
           nixpkgs.overlays =
-            [ overlay-unstable extra-pkgs nur.overlay (import self.inputs.emacs-overlay) ];
+            [ overlay-unstable extra-pkgs nur.overlays.default (import self.inputs.emacs-overlay) ];
         }
 
         ({ lib, pkgs, nix, ... }: {
@@ -106,6 +106,7 @@
           common-pc-laptop-ssd
           common-pc-laptop
           common-cpu-amd
+
           common-cpu-amd-raphael-igpu
           common-cpu-amd-pstate
           common-gpu-amd

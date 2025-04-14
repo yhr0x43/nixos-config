@@ -14,21 +14,9 @@ in {
   config = mkIf cfg.enable {
     system.custom.bluetooth.enable = true;
     system.custom.fonts.enable = true;
-    system.custom.syncthing = {
-      enable = true;
-      customUser.enable = true;
-    };
-
-    services.syncthing = {
-      settings.folders = {
-        dox = {
-          enable = true;
-          path = "/home/yhrc/dox";
-        };
-      };
-    };
-
+    
     system.custom.audio.enable = true;
+    # system.custom.x11.enable = true;
 
     system.custom.udev = {
       hackRF = true;
@@ -37,12 +25,6 @@ in {
     };
 
     system.custom.i18n.enable = true;
-
-    services.pipewire = {
-      enable = true;
-      alsa.enable = true;
-      pulse.enable = true;
-    };
     
     environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
@@ -84,11 +66,6 @@ in {
     };
 
     environment.systemPackages = with pkgs; [
-      acpi
-
-      man-pages
-      man-pages-posix
-
       hicolor-icon-theme
 
       python3 # for passFF
@@ -112,10 +89,8 @@ in {
       # teams
     ];
 
-    documentation.dev.enable = true;
-
     #TODO: does re-implementing the services here make sense?
-    #Especiall the project has default ones: https://github.com/maximbaz/yubikey-touch-detector
+    # Especiall the project has default ones: https://github.com/maximbaz/yubikey-touch-detector
     systemd.user.services."yubikey-touch-detector" = {
       description = "Detects when your YubiKey is waiting for a touch";
       requires = [ "yubikey-touch-detector.socket" ];
@@ -135,7 +110,7 @@ in {
 
     security.pam.u2f.enable = true;
 
-    # Running GNOME program outside of GNOME
+    # Running GNOME program without GNOME
     # Provide Dbus ca.desrt.dconf
     programs.dconf.enable = true;
 
@@ -160,7 +135,6 @@ in {
       tumbler.enable = true;
       upower.enable = true;
       dbus.enable = true;
-      autorandr.enable = true;
     };
 
     hardware.sane.enable = true;
