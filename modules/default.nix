@@ -15,6 +15,7 @@
     ./system/bluetooth.nix
     ./system/font.nix
     ./system/fs.nix
+    ./system/graphics.nix
     ./system/i18n.nix
     ./system/mainUser.nix
     ./system/syncthing.nix

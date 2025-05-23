@@ -16,9 +16,8 @@ in {
       defaultLocale = "ja_JP.utf-8";
       supportedLocales = [ "ja_JP.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" "zh_CN.UTF-8/UTF-8" ];
       inputMethod = {
-        # type = "fcitx5";
-        # enable = true;
-        enabled = "fcitx5";
+        enable = true;
+        type = "fcitx5";
         fcitx5.waylandFrontend = true;
         fcitx5.addons = with pkgs; [
           # fcitx5-gtk

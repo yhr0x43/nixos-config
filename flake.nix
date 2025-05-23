@@ -2,17 +2,10 @@
   description = "yhr_C's very basic flake";
 
   inputs = {
-
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware";
-
     nur.url = "github:nix-community/NUR";
-
-    emacs-overlay.url = "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz";
-
   };
 
   outputs = inputs@{ self, nixpkgs, nixpkgs-unstable, nixos-hardware, nur, ... }:
@@ -33,16 +26,15 @@
 
       common-modules = [
         ./modules
-
         ./cachix.nix
 
         {
           nixpkgs.overlays =
-            [ overlay-unstable extra-pkgs nur.overlays.default (import self.inputs.emacs-overlay) ];
+            [ overlay-unstable extra-pkgs nur.overlays.default ];
         }
 
         ({ lib, pkgs, nix, ... }: {
-          system.stateVersion = "24.05";
+          system.stateVersion = "24.11";
 
           # Enable using the same nixpkgs commit in the imperative tools
           nix.registry = {
@@ -50,7 +42,7 @@
             nixpkgs-unstable.flake = nixpkgs-unstable;
           };
 
-          nix.package = pkgs.nixFlakes;
+          nix.package = pkgs.nixVersions.stable;
           nix.settings.auto-optimise-store = true;
 
           nix.extraOptions = "experimental-features = nix-command flakes";

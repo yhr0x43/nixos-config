@@ -32,7 +32,7 @@ in {
     virtualisation.lxc.lxcfs.enable = true;
     system.custom.mainUser.extraGroups = [ "lxd" ];
 
-    hardware.opengl.driSupport32Bit = true;
+    hardware.graphics.enable32Bit = true;
     hardware.pulseaudio.support32Bit = true;
 
     environment.systemPackages = with pkgs; [

@@ -16,7 +16,7 @@ in {
     system.custom.fonts.enable = true;
     
     system.custom.audio.enable = true;
-    # system.custom.x11.enable = true;
+    system.custom.graphics.enable = true;
 
     system.custom.udev = {
       hackRF = true;
@@ -25,20 +25,17 @@ in {
     };
 
     system.custom.i18n.enable = true;
-    
-    environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
     qt.platformTheme = "qt5ct";
+    security.polkit.enable = true;
 
     system.custom.mainUser = {
       enable = true;
       userName = "yhrc";
       #TODO: manage wireshark in system.custom.mainUser
-      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" "input" ];
+      extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" "input" "render" ];
     };
     
-    programs.light.enable = true;
-
     time.timeZone = "America/Chicago";
 
     #qt5.enable = true;
@@ -116,7 +113,7 @@ in {
 
     environment.variables = {
       BROWSER = "firefox";
-      EDITOR = "nvim";
+      EDITOR = "emacs";
       TERM = "xterm-256color";
       #GNUPGHOME = "~/.local/share/gnupg";
     };
