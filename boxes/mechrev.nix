@@ -3,6 +3,8 @@
 {
   profile.workstation.enable = true;
 
+  time.timeZone = "America/Chicago";
+
   # FIXME: /etc/tmpfiles.d/00-nixos.conf:17: Duplicate line for path "/etc/NetworkManager/system-connections", ignoring.
   systemd.tmpfiles.rules = [
     "L /etc/NetworkManager/system-connections - - - - /persist/etc/NetworkManager/system-connections"
@@ -21,7 +23,7 @@
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/0b854cfe-5d08-43cc-bb51-13d85676b78d"; } ];
-
+  
   # Suspend-then-hibernate everywhere
   services.logind = {
     lidSwitch = "suspend-then-hibernate";
@@ -60,7 +62,16 @@
   hardware.enableRedistributableFirmware = true;
 
   services.tailscale.enable = true;
+  services.tailscale.useRoutingFeatures = "client";
 
+  systemd.services.fprintd = {
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig.Type = "simple";
+  };
+  services.fprintd.enable = true;
+
+  systemd.network.wait-online.enable = false;
+  
   boot.kernelPackages = pkgs.linuxPackages_6_12;
   # Workaround for SuspendThenHibernate: https://lore.kernel.org/linux-kernel/20231106162310.85711-1-mario.limonciello@amd.com/
   boot.kernelParams = lib.optionals (lib.versionOlder config.boot.kernelPackages.kernel.version "6.8") [ "rtc_cmos.use_acpi_alarm=1" ];
