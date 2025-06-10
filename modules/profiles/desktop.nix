@@ -36,12 +36,6 @@ in {
       extraGroups = [ "wireshark" "video" "lp" "scanner" "dialout" "deluge" "input" "render" ];
     };
     
-    time.timeZone = "America/Chicago";
-
-    #qt5.enable = true;
-    #qt5.platformTheme = "gtk2";
-    #qt5.style = "gtk2";
-
     programs.less = {
       enable = true;
       envVariables = {
@@ -68,8 +62,6 @@ in {
       python3 # for passFF
       pavucontrol
 
-      calcurse
-
       # gtk libraries
       # FIXME: No schema installed
       glib # gsettings
@@ -80,7 +72,6 @@ in {
       lxmenu-data
       shared-mime-info
       
-      (hunspellWithDicts (with hunspellDicts; [ en-us ]))
       # NONFREE
       # zoom-us
       # teams
@@ -110,13 +101,6 @@ in {
     # Running GNOME program without GNOME
     # Provide Dbus ca.desrt.dconf
     programs.dconf.enable = true;
-
-    environment.variables = {
-      BROWSER = "firefox";
-      EDITOR = "emacs";
-      TERM = "xterm-256color";
-      #GNUPGHOME = "~/.local/share/gnupg";
-    };
 
     programs.gnupg.agent = {
       enable = true;

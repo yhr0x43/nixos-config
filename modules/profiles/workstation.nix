@@ -36,20 +36,7 @@ in {
     hardware.pulseaudio.support32Bit = true;
 
     environment.systemPackages = with pkgs; [
-      openconnect
-      usbutils
-      imagemagick
-      libnotify
-      gimp-with-plugins
-
-      vscodium
-
       hackrf
-
-      mono4
-      winePackages.fonts
-      wineWowPackages.stagingFull
-      winetricks
     ];
 
     services.deluge = {
