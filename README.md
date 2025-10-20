@@ -1,5 +1,7 @@
 # nixos-config
 
+**I am not using NixOS anymore and do not plan on coming back anytime soon, hence archiving**
+
 My configuration for nixos
 
 This configuration took inspiritions from
